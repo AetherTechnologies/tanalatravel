@@ -24,6 +24,7 @@ include('includes/config.php');
 <!--animate-->
 <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/wow.min.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.css" />
 	<script>
 		 new WOW().init();
 	</script>
@@ -50,7 +51,7 @@ include('includes/config.php');
 
 
 <?php 
-$con = mysqli_connect("localhost", "roou627076978_tanalatravelus","EK2$1zqt;Y1","u627076978_tanalatraveldb");
+$con = mysqli_connect("localhost", "u627076978_tanalatravelus","EK2$1zqt;Y1","u627076978_tanalatraveldb");
 $fetchQuery = mysqli_query($con, "SELECT tbltourpackages.PackageLocation as Analysis_Location
 FROM `tblbooking`
 INNER JOIN tbltourpackages ON tbltourpackages.PackageId = tblbooking.PackageId
