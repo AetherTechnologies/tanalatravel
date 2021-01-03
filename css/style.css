@@ -43,7 +43,7 @@ label{
     font-size: 2em;
     font-weight: 400;
     display: block;
-    text-decoration: none!important;
+    text-decoration: none;
     font-family: 'Oswald', sans-serif;
 }
 .logo span {
@@ -100,7 +100,8 @@ li.ned,li.wrt,li.tol{
     display: block;
 }
 .logo {
-    
+    float: left;
+	 margin-right: 60px;
 }
 .bus {
     float: left;
@@ -113,8 +114,9 @@ li.ned,li.wrt,li.tol{
     letter-spacing: .05em;
 	padding:0 15px;
 }
-.lock:nth-child(2) {
-    margin-left: auto
+.lock {
+    float: right;
+    margin-top: 7px;
 }
 .securetxt {
     color: #1f8dd6;
@@ -1607,7 +1609,7 @@ button.subbtn:focus, button.subbtn:hover {
     margin-bottom: 1em;
 }
 .privacy {
-    padding-bottom: 10rem;
+    padding: 5em 0;
 }
 .privacy p {
     font-size: 1em;
@@ -4382,18 +4384,3 @@ ul.set-1 {
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
-footer
-{
-    width: 100%;
-    bottom: 0;
-}
-textarea
-{
-    resize: none!important;
-}
-.card-flex-text
-{
-    padding: 5px;
-    border: transparent!important;
-}
-
