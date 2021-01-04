@@ -18,8 +18,11 @@ include('includes/config.php');
 <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link href="css/font-awesome.css" rel="stylesheet">
 <!-- Custom Theme files -->
-<script src="js/jquery-1.12.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-1.12.0.min.js"
+  integrity="sha256-Xxq2X+KtazgaGuA2cWR1v3jJsuMJUozyIXDB3e793L8="
+  crossorigin="anonymous"></script>		
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <!--animate-->
 <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/wow.min.js"></script>
