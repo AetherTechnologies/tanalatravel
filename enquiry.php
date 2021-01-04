@@ -88,7 +88,7 @@ $error="Something went wrong. Please try again";
 		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">Inquiry Form</h3>
 		<form name="enquiry" method="post">
 			<div class="container">
-				<div class="row">
+				<div class="row justify-content-center">
 					<div class="col-lg-8">
 					<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>

@@ -49,7 +49,6 @@ include('includes/config.php');
 
 
 <?php 
-$con = mysqli_connect("localhost","u627076978_tanalatravelus","EK2$1zqt;Y1","u627076978_tanalatraveldb");
 $fetchQuery = mysqli_query($con, "SELECT tbltourpackages.PackageLocation as Analysis_Location
 FROM `tblbooking`
 INNER JOIN tbltourpackages ON tbltourpackages.PackageId = tblbooking.PackageId
