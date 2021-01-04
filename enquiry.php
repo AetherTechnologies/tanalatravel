@@ -87,10 +87,13 @@ $error="Something went wrong. Please try again";
 	<div class="container">
 		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">Inquiry Form</h3>
 		<form name="enquiry" method="post">
-		 <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+					<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+	
 	<p style="width: 350px;">
-
 			<b>Full name</b>  <input type="text" name="fname" class="form-control" id="fname" placeholder="Full Name" required="">
 	</p>
 <p style="width: 350px;">
@@ -111,7 +114,10 @@ $error="Something went wrong. Please try again";
 			<p style="width: 350px;">
 <button type="submit" name="submit1" class="btn-primary btn">Submit</button>
 			</p>
-			</form>
+					</div>
+				</div>
+			</div> 
+		</form>
 
 
 	</div>

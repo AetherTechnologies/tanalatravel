@@ -27,7 +27,7 @@ h1,h2,h3,h4,h5,h6{
     text-align: center!important;
 }	
 p{
-	margin:0;
+	text-align: center;
 }
 ul{
 	margin:0;
@@ -1491,7 +1491,7 @@ button.subbtn:focus, button.subbtn:hover {
 /*-- login --*/
 .login-right{
 	float:right;
-	width:51%;
+	width:100%;
 }
 .login-right h3{
     color: #4CB320;
@@ -1570,36 +1570,6 @@ button.subbtn:focus, button.subbtn:hover {
 }
 .login-left ul li a:hover{
 	opacity:.7;
-}
-.login-left ul li a.fb{
-	background:#3b5998;
-}
-.login-left ul li a.goog{
-	background:#dc4e41;
-}
-.login-left ul li a.linkin{
-	background:#00a0dc;
-}
-.login-left ul li a.fb i{
-    background: url(../images/social.png) no-repeat -45px -1px;
-    width: 24px;
-    height: 23px;
-    display: inline-block;
-    vertical-align: text-bottom;
-}
-.login-left ul li a.goog i{
-    background: url(../images/social.png) no-repeat -84px 0px;
-    width: 26px;
-    height: 23px;
-    display: inline-block;
-    vertical-align: text-bottom;
-}
-.login-left ul li a.linkin i{
-    background: url(../images/social.png) no-repeat -3px 0px;
-    width: 25px;
-    height: 23px;
-    display: inline-block;
-    vertical-align: text-bottom;
 }
 /*-- //login --*/
 .privacy h3 {
@@ -4383,4 +4353,7 @@ ul.set-1 {
     border-left: 4px solid #4caf50;
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.modal-card{
+    width: 400px!important;
 }

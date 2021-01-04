@@ -25,7 +25,7 @@ echo "<script type='text/javascript'> document.location = 'package-list.php'; </
 ?>
 
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
+				<div class="modal-dialog modal-card" role="document">
 					<div class="modal-content modal-info">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
@@ -33,13 +33,6 @@ echo "<script type='text/javascript'> document.location = 'package-list.php'; </
 						<div class="modal-body modal-spa">
 							<div class="login-grids">
 								<div class="login">
-										<div class="login-left">
-												<ul>
-													<li><a class="fb" href="#"><i></i>Facebook</a></li>
-													<li><a class="goog" href="#"><i></i>Google</a></li>
-													
-												</ul>
-											</div>
 									<div class="login-right">
 										<form method="post">
 											<h3>Signin with your account </h3>
