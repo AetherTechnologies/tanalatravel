@@ -1,0 +1,63 @@
+.navbar {
+  background: black;
+  background: -webkit-gradient(linear, left top, right top, color-stop(100%, rgba(2, 0, 36, 0)), color-stop(100%, rgba(2, 0, 36, 0.448617)), to(rgba(2, 0, 36, 0)));
+  background: linear-gradient(90deg, rgba(2, 0, 36, 0) 100%, rgba(2, 0, 36, 0.448617) 100%, rgba(2, 0, 36, 0) 100%);
+  border-bottom: none;
+  padding: 30px 0;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+
+.navbar a {
+  color: #fff !important;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+/* jQuery Styles
+===================================*/
+.navbar-scroll {
+  background: black;
+  padding: 0;
+  -webkit-transition-duration: 0.9s;
+          transition-duration: 0.9s;
+}
+
+.navbar-scroll.navbar-brand {
+  margin-top: 0.9rem !important;
+}
+
+.navbar-scroll a {
+  color: #fff;
+}
+
+.nav-dropdown-scroll {
+  background: #e7eaea;
+  -webkit-box-shadow: 0px 10px 9px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 10px 9px rgba(0, 0, 0, 0.4);
+}
+
+.custom-btn {
+  background-color: #6c757d !important;
+  border-radius: 5px !important;
+}
+
+.custom-btn:hover {
+  background-color: #e7eaea !important;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.pt-6 {
+  padding-top: 10%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+/*# sourceMappingURL=index.css.map */
