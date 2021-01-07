@@ -4357,3 +4357,7 @@ ul.set-1 {
 .modal-card{
     width: 400px!important;
 }
+.justify-content-center{
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+}
