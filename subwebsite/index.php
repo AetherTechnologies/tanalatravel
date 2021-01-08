@@ -1,3 +1,14 @@
+<?php
+if(isset($_POST['book'])){
+    if(session_status() == PHP_SESSION_NONE){
+        echo '<script>alert("Login to account to book")</script>';
+    }
+}
+else{
+    
+}
+?>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -7,7 +18,7 @@
 <title>Homepage</title>
 </head>
 
-<body>
+<body style="background:gray">
 <div class="container" style="background:#ffff">
     <section id="home">
         <nav class="navbar navbar-expand-lg fixed-top py-3 px-4 nav justify-content-center">
@@ -42,6 +53,7 @@
                 <img src="images\carousel3.jpg" class="d-block w-100 h-75" alt="images\notfound.jpg">
             </div>
         </div>
+
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -89,27 +101,46 @@
 <form method="POST">
     <div class="row">
         <?php 
-            $i=0;
-            while($i < 14)
-            {
+        include("connect.php");
+        $result = mysqli_query($con,"SELECT * FROM bookings");
+        $n1 = mysqli_num_rows($result);
+            //$row = mysqli_fetch_array($result);
+            // $i=0;
+            // while($i < $n1)
+            // {     
+            // $b1=mysqli_result($result,$i,"booking_name");
+            // $b2=mysqli_result($result,$i,"booking_price");
+            // $b3=mysqli_result($result,$i,"booking_description");
+            // $b4=mysqli_result($result,$i,"booking_type");
+            // $b5=mysqli_result($result,$i,"booking_rating");
+            // $b6=mysqli_result($result,$i,"booking_location");     
+            // MYSQL_RESULT was deprecated in PHP 5.5.0 :(((((((
+            
+        if($n1 > 0)
+        {
+            foreach($result as $key => $data)
+            {               
             ?>
             <div class="col-md-3 d-flex my-2 mx-auto justify-content-center">  
                 <div class="card" style="width: 18rem;">
-                    <img src="images\asd.jpg" class="card-img-top" alt="item_img" name="booking_image" >
-                    <div class="card-body">
-                        <h5 class="card-title" name="booking_name">Book name</h5>
-                        <p class="card-text" name="booking_type"><strong>Book type</strong></p>
-                        <p class="card-text" name="booking_description"><strong>Description:</strong>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p class="card-text" name="booking_price"><strong>Price:</strong> $12.99</p>
-                        <p class="card-text" name="booking_rating"><strong>Rating:</strong>5</p>
-                        <p class="card-text" name="booking_location"><strong>Location:</strong>Manila, Ermita</p>
+                    <img src="uploads\<?= $data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
+                    <div class="card-body">                   
+                        <h5 class="card-title" name="booking_name"><?= $data['booking_name'] ?></h5>
+                        <p class="card-text" name="booking_type"><strong><?= $data['booking_type'] ?></strong></p>
+                        <p class="card-text" name="booking_description"><strong>Description:</strong><?= $data['booking_description'] ?></p>
+                        <p class="card-text" name="booking_price"><strong>Price:</strong><?= $data['booking_price'] ?></p>
+                        <p class="card-text" name="booking_rating"><strong>Rating:</strong><?= $data['booking_rating'] ?></p>
+                        <p class="card-text" name="booking_location"><strong>Location:</strong><?= $data['booking_location'] ?></p>
                         <button type="submit" class="btn btn-primary" name="book">Book</a>
                     </div>
                 </div> 
             </div>
         <?php
-            $i++;
             }
+        }
+        else{
+            echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
+        }
         ?>
     </div>
 </form>
