@@ -53,12 +53,11 @@ if(isset($_POST['add']))
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Item successfully Added!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';   
-
-        else{
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-            Problem in uploading to database<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
+        // else{
+        //     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        //     Problem in uploading to database<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        //     </div>';
+        // }
     }
 }
 
