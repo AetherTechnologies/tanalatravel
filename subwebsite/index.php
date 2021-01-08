@@ -7,7 +7,7 @@
 <title>Homepage</title>
 </head>
 
-<body style="background:gray">
+<body>
 <div class="container" style="background:#ffff">
     <section id="home">
         <nav class="navbar navbar-expand-lg fixed-top py-3 px-4 nav justify-content-center">
@@ -33,13 +33,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="images\asd.jpg" class="d-block w-100 h-75" alt="...">
+                <img src="images\carousel1.jpg" class="d-block w-100 h-75" alt="images\notfound.jpg">
                 </div>
                 <div class="carousel-item">
-                <img src="images\twice-sana-4.jpg" class="d-block w-100 h-75" alt="...">
+                <img src="images\carousel2.jpg" class="d-block w-100 h-75" alt="images\notfound.jpg">
                 </div>
                 <div class="carousel-item">
-                <img src="images\twice-sana-4.jpg" class="d-block w-100 h-75" alt="...">
+                <img src="images\carousel3.jpg" class="d-block w-100 h-75" alt="images\notfound.jpg">
             </div>
         </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -83,6 +83,10 @@
     </div>
     <!-- dropdown filter -->
 </form>
+
+
+<!-- book form -->
+<form method="POST">
     <div class="row">
         <?php 
             $i=0;
@@ -91,11 +95,15 @@
             ?>
             <div class="col-md-3 d-flex my-2 mx-auto justify-content-center">  
                 <div class="card" style="width: 18rem;">
-                    <img src="images\asd.jpg" class="card-img-top" alt="...">
+                    <img src="images\asd.jpg" class="card-img-top" alt="item_img" name="booking_image" >
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title" name="booking_name">Book name</h5>
+                        <p class="card-text" name="booking_type"><strong>Book type</strong></p>
+                        <p class="card-text" name="booking_description"><strong>Description:</strong>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text" name="booking_price"><strong>Price:</strong> $12.99</p>
+                        <p class="card-text" name="booking_rating"><strong>Rating:</strong>5</p>
+                        <p class="card-text" name="booking_location"><strong>Location:</strong>Manila, Ermita</p>
+                        <button type="submit" class="btn btn-primary" name="book">Book</a>
                     </div>
                 </div> 
             </div>
@@ -104,6 +112,8 @@
             }
         ?>
     </div>
+</form>
+    
 
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center pt-5">
