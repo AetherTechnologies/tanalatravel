@@ -8,18 +8,26 @@ if(isset($_POST['submit']))
     $password = $_POST['password'];
 
     $sql = mysqli_query($con, "SELECT * FROM accounts WHERE username='$username' AND password='$password'");
+    $sql2 = mysqli_query($con, "SELECT [rank] FROM accounts WHERE username='$username'");
     $result = mysqli_num_rows($sql);
 
-    if($result > 0)
+    if($result > 1)
     {
-        header("location:user\index.php");
-        $_SESSION["username"] = $username;
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Invalid username and password!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>'; 
     }
     else
     {
-        echo "<script>
-        alert('Username and password do not match')</script>";
+        if($sql2 == 'user'){
+            header("location:user\index.php");
+            //$_SESSION["username"] = $username;
+        }
+        else{
+
+        }
     }
+        
 
 }
 ?>
@@ -38,18 +46,16 @@ if(isset($_POST['submit']))
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-xl-3 col-lg-6 col-md-6 pt-5">
-                        <h1>Login</h1>
+                        <h1 class="header-center">Login</h1>
                         <div class="pt-3">
-                            <input type="text" name="username" placeholder="username" class="form-control">
+                            <input type="text" name="username" placeholder="username" class="form-control" required>
                         </div>
                         <div class="pt-2">
-                            <input type="password" name="password" placeholder="password" class="form-control">
+                            <input type="password" name="password" placeholder="password" class="form-control" required>
                         </div>
                         <div class="pt-2">
-                            <button type="submit" name="submit" class="btn btn-success ms-5">Sign in</button>
-                            <a class="btn btn-secondary ms-4" href="Register.php">Register</a>
-                            <br>
-                            <!-- <a href="#">Forgot password?</a> -->
+                            <button type="submit" name="submit" class="btn btn-success">Sign in</button>          
+                            <a href="#">Forgot password?</a> <a class="ms-4" href="Register.php">Signup?</a>
                         </div>
                     </div>
                 </div>

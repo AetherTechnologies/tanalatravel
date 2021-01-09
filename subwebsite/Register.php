@@ -17,12 +17,11 @@ if(isset($_POST['submit']))
 
     }else
     {
-        $query="INSERT INTO accounts (`username`,`password`,`email`) VALUES ('$username','$password','$email')";
+        $query="INSERT INTO accounts (`username`,`password`,`email`,`rank`) VALUES ('$username','$password','$email','user')";
         mysqli_query($con, $query);
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Account successfully created!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
-
     }
 }
 
