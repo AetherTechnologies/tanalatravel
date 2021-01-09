@@ -1,11 +1,11 @@
 <?php
 if(isset($_POST['book'])){
-    if(session_status() == PHP_SESSION_NONE){
-        echo '<script>alert("Login to account to book")</script>';
+    if(session_status() != PHP_SESSION_NONE){
+
     }
 }
 else{
-    
+        echo '<script>alert("Login to account to book")</script>';
 }
 ?>
 
@@ -84,14 +84,16 @@ else{
 
     <!-- dropdown filter -->
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-            Filter
+        <a href="add.php" class="btn btn-secondary" aria-expanded="false">Add</a>
+            
+       <!--  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Add
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">All</a></li>
             <li><a class="dropdown-item" href="#">Hotels</a></li>
             <li><a class="dropdown-item" href="#">Flights</a></li>
-        </ul>
+        </ul> -->
     </div>
     <!-- dropdown filter -->
 </form>
