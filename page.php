@@ -43,7 +43,6 @@ $error="Something went wrong. Please try again";
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <link href="css/font-awesome.css" rel="stylesheet">
 <!-- Custom Theme files -->
 <script src="js/jquery-1.12.0.min.js"></script>
@@ -86,33 +85,34 @@ $error="Something went wrong. Please try again";
 <!--- privacy ---->
 <div class="privacy">
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-			<div class="card card-flex-text">
-			<?php
-			$pagetype=$_GET['type'];
-			$sql = "SELECT type,detail from tblpages where type=:pagetype";
-			$query = $dbh -> prepare($sql);
-			$query->bindParam(':pagetype',$pagetype,PDO::PARAM_STR);
-			$query->execute();
-			$results=$query->fetchAll(PDO::FETCH_OBJ);
-			$cnt=1;
-			if($query->rowCount() > 0)
-			{
-				foreach($results as $result)
-				{
+										<?php
+$pagetype=$_GET['type'];
+$sql = "SELECT type,detail from tblpages where type=:pagetype";
+$query = $dbh -> prepare($sql);
+$query->bindParam(':pagetype',$pagetype,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{
 
-					?>
-					<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;"><?php echo $result->type; ?></h3>
-					<p>
-						<?php 	echo $result->detail; ?>
-					</p>
-						<?php 
-				} 
-			}?>
-			</div>
-			</div>
-		</div>
+?>
+
+
+		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;"><?php echo $result->type; ?></h3>
+
+
+	<p>
+	<?php 	echo $result->detail; ?>
+
+
+	</p>
+<?php } }?>
+
+
+
 	</div>
 </div>
 <!--- /privacy ---->

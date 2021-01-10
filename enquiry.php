@@ -43,7 +43,6 @@ $error="Something went wrong. Please try again";
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <link href="css/font-awesome.css" rel="stylesheet">
 <!-- Custom Theme files -->
 <script src="js/jquery-1.12.0.min.js"></script>
@@ -88,36 +87,36 @@ $error="Something went wrong. Please try again";
 	<div class="container">
 		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">Inquiry Form</h3>
 		<form name="enquiry" method="post">
-		 <div class="container-fluid">
-			 <div class="row justify-content-center">
-			 <div class="col-lg-10">
-				 <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+					<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php }
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
-				<p class="w-100">
-					<b>Full name</b>  <input type="text" name="fname" class="form-control" id="fname" placeholder="Full Name" required="">
-				</p>
+	
+	<p style="width: 350px;">
+			<b>Full name</b>  <input type="text" name="fname" class="form-control" id="fname" placeholder="Full Name" required="">
+	</p>
+<p style="width: 350px;">
+<b>Email</b>  <input type="email" name="email" class="form-control" id="email" placeholder="Valid Email id" required="">
+	</p>
 
-				<p class="w-100">
-						<b>Email</b>  <input type="email" name="email" class="form-control" id="email" placeholder="Valid Email id" required="">
-				</p>
+	<p style="width: 350px;">
+<b>Mobile No</b>  <input type="text" name="mobileno" class="form-control" id="mobileno" maxlength="10" placeholder="10 Digit mobile No" required="">
+	</p>
 
-				<p class="w-100">
-					<b>Mobile No</b>  <input type="text" name="mobileno" class="form-control" id="mobileno" maxlength="10" placeholder="10 Digit mobile No" required="">
-				</p>
+	<p style="width: 350px;">
+<b>Subject</b>  <input type="text" name="subject" class="form-control" id="subject"  placeholder="Subject" required="">
+	</p>
+	<p style="width: 350px;">
+<b>Description</b>  <textarea name="description" class="form-control" rows="6" cols="50" id="description"  placeholder="Description" required=""></textarea>
+	</p>
 
-				<p class="w-100">
-					<b>Subject</b>  <input type="text" name="subject" class="form-control" id="subject"  placeholder="Subject" required="">
-				</p>
-				<p class="w-100">
-					<b>Description</b>  <textarea name="description" class="form-control" rows="6" cols="50" id="description"  placeholder="Description" required=""></textarea>
-				</p>
-
-				<p style="width: 350px;">
-					<button type="submit" name="submit1" class="btn-primary btn">Submit</button>
-				</p>
-				 </div>
-			 </div>
-		 </div>
+			<p style="width: 350px;">
+<button type="submit" name="submit1" class="btn-primary btn">Submit</button>
+			</p>
+					</div>
+				</div>
+			</div> 
 		</form>
 
 
