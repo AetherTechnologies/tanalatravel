@@ -4,6 +4,6 @@
 //$con = mysqli_connect('localhost','root','','practice_db');
 
 //Use this connection in for online website
-$con = mysqli_connect('localhost','u627076978_sampleuser','nVH]y*3[[I0n','u627076978_sampleweb');
+$con = mysqli_connect('localhost','u627076978_sampleuser','Y?8]j2]a','u627076978_sampleweb');
 
 ?>
