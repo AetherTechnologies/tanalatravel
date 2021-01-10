@@ -1,5 +1,5 @@
 <?php 
-DB credentials.
+// DB credentials.
 $DBHost = "localhost";
 $DBUser = "u627076978_tanalatravelus";
 $DBPass = "EK2$1zqt;Y1";

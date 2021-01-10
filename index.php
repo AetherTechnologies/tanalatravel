@@ -86,13 +86,8 @@ foreach($results as $result)
 
 <?php }} ?>
 
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
 <div><a href="package-list.php" class="view">View More Packages</a></div>
+
 </div>
 			<div class="clearfix"></div>
 </div>
