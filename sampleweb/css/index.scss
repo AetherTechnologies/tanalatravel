@@ -57,3 +57,7 @@
 .header-center {
     text-align: center;
 }
+
+input:read-only {
+    background-color: gray;
+}
