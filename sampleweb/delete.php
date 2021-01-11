@@ -1,48 +1,13 @@
 <?php
-include('connect.php');
-
-    // if(isset($_POST['search'])){
-    
-    // $id = $_POST['bookingID'];
-    // include("connect.php");
-    // $query = mysqli_query($con, "SELECT * FROM bookings WHERE bookingID =='$id'");
-    // $result = mysqli_num_rows($query);
-    // $row = mysqli_fetch_array($result);
-
-    //     if($count == 1){
-    //         $id = $row=['bookingID'];
-    //         $bimage = $row['booking_image'];
-    //         $bname = $row=['booking_name'];
-    //         $bprice = $row['booking_price'];
-    //         $bdesc = $row['booking_description'];
-    //         $btype = $row['booking_type'];
-    //         $brating = $row['booking_rating'];
-    //         $blocation = $row['booking_location'];
-    //     }
-
-    //     else{
-    //         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    //         ID not found<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    //         </div>';
-    //     }
-    // }
-
 
     if(isset($_POST['delete'])){
-        
-        $id = $_POST['bookingID'];
-        $image = $_POST['booking_image'];
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $desc = $_POST['description'];
-        $type = $_POST['type'];
-        $rating = $_POST['rating']; 
-        $location = $_POST['location'];
+    include('connect.php');
+    $bid = $_POST['bid'];
 
-        $query="DELETE FROM bookings WHERE bookingID = $id";        
-        mysqli_query($con, $query);
+         $query="DELETE FROM bookings WHERE `bookingID` = $bid";        
+         mysqli_query($con, $query);
 
-    }
+     }
 ?>
 
     <html lang="en">
@@ -57,7 +22,6 @@ include('connect.php');
     </head>
     <!-- Button trigger modal -->
     
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -79,20 +43,23 @@ include('connect.php');
             </div>
             </div>
 
+    <!-- Button trigger modal -->       
+
     <body style=background:#fffff>
         <div class="container">
-            <form method="POST">
                 <h1>Delete</h1>
-                <div class="d-flex col-xl-2 col-lg-3 col-md-3 col-xs-2 my-2">              
-                <input type="number" class="form-control" onkeyup="myFunction()" placeholder="Search " id="myInput">
+                <div class="d-flex col-xl-3 col-lg-3 col-md-3 col-xs-2 my-2">              
+                <input type="text" class="form-control" onkeyup="myFunction()" placeholder="Search " id="myInput">
+                <a href="#flights" class="nav-link">Flights</a>
+                <a href="#hotels" class="nav-link">Hotels</a>
                 <!-- <button type="submit" class="btn btn-success mx-2 form-control" name="search">Search</button> -->
                 </div>              
                     <table class="table my-2" id="myTable">                
                         <thead>
                             <tr class="table-success">
                             <th scope="col">ID</th>
-                            <th scope="col">image</th>
                             <th scope="col">name</th>
+                            <th scope="col">image</th>
                             <th scope="col">price</th>
                             <th scope="col">description</th>
                             <th scope="col">type</th>
@@ -102,45 +69,56 @@ include('connect.php');
                             <th class=""></th>
                             </tr>
                         </thead>
-                        <tbody id="myTable">
-                <?php 
-                    include("connect.php");
-
-                    $result = mysqli_query($con,"SELECT * FROM bookings");
-                    $n1 = mysqli_num_rows($result);
-                    
-                    if($n1 > 0)
-                    {
-                        foreach($result as $key => $data)
-                        {               
-                ?>
-                            <tr>
-                            <th><?= $data['bookingID'] ?></th>
-                            <td><?= $data['booking_image'] ?></td>
-                            <td><?= $data['booking_name'] ?></td>
-                            <td><?= $data['booking_price'] ?></td>
-                            <td><?= $data['booking_description'] ?></td>
-                            <td><?= $data['booking_type'] ?></td>
-                            <td><?= $data['booking_rating'] ?></td>
-                            <td><?= $data['booking_location'] ?></td> 
+                    <tbody>
+                    <form method="POST">
+                        <?php 
+                            include("connect.php");
+                            $sql = "SELECT * FROM bookings";
+                            //  $n1 = mysqli_num_rows($result);
+                            //  if($n1 > 0){
+                            //      foreach($result as $key => $data){               
+                            if($result = mysqli_query($con,$sql)){
+                                while($row = mysqli_fetch_assoc($result))
+                                {           
+                                    $id = $row['bookingID'];
+                                    $name = $row['booking_name'];
+                                    $image = $row['booking_image'];
+                                    $price = $row['booking_price'];
+                                    $description = $row['booking_description'];
+                                    $type = $row['booking_type'];
+                                    $rating = $row['booking_rating'];
+                                    $location = $row['booking_location'];
+                        ?>
+                            <tr> 
+                            <th><?= $id ?><input type="hidden " name="bid" value="<?= $id ?>"></td>
+                            <td><?= $name ?></td>
+                            <td><img src="<?= $image ?>"width="100px" height="100px"></td>
+                            <td><?= $price ?></td>
+                            <td><?= $description ?></td>
+                            <td><?= $type ?></td>
+                            <td><?= $rating ?></td>
+                            <td><?= $location ?></td> 
                             <td><button type="submit" class="btn btn-primary" name="update">
                                 update
                             </button></td>
                             <!-- <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> -->
-                            <td><button type="submit" class="btn btn-danger" name="delete">
+                            <td>                         
+                            <button type="submit" class="btn btn-danger" name="delete">                         
                                 delete
                             </button></td>
-                            </tr>   
-                <?php
+                            </tr> 
+                        </form>                                          
+                    </tbody> 
+                    <?php
+                            //      }
+                            //  }
+                            }                       
                         }
-                    }
-                    else{
-                        echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
-                    }
-                 ?>                                            
-                        </tbody>
-                    </table>
-            </form>
+                        else{
+                                echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
+                            }
+                    ?>                                   
+                </table>
         </div>
                 
 

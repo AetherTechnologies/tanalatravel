@@ -1,6 +1,9 @@
 <?php
 include('connect.php');
-if(isset($_POST['add']))
+if(!isset($_POST['add'])){
+
+}
+else
 {
     $name = strtoupper($_POST['name']);
     $price = $_POST['price'];
@@ -8,9 +11,9 @@ if(isset($_POST['add']))
     $type = $_POST['type'];
     $rating = $_POST['rating']; 
     $location = $_POST['location'];
-    $image = $_FILES['bookingimage']['name'];
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["bookingimage"]["name"]);
+    $image = "uploads/".$_FILES['bookingimage']['name'];
+    //$target_dir = ""; dont delete
+    $target_file = basename($_FILES["bookingimage"]["name"]);
 
     // Select file type
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -35,12 +38,14 @@ if(isset($_POST['add']))
         File size too big must be lesser than 2MB<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
     }
-    // Check image dimensions
-    else if($width > "300" || $height > "350"){
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        File size too big must be within 300 x 350<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-    }
+
+    // // Check image dimensions
+    // else if($width > "300" || $height > "350"){
+    //     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    //     File size too big must be within 300 x 350<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    //     </div>';
+    // }
+    
     // Upload image
     else{
         // Insert record
@@ -48,7 +53,8 @@ if(isset($_POST['add']))
         mysqli_query($con, $query);
 
         // Upload file
-        move_uploaded_file($_FILES['bookingimage']['tmp_name'],$target_dir.$image);
+        //move_uploaded_file($_FILES['bookingimage']['tmp_name'],$target_dir.$image);
+        move_uploaded_file($_FILES['bookingimage']['tmp_name'],$image);
 
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Item successfully Added!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -104,7 +110,7 @@ if(isset($_POST['add']))
                         </div>
 
                         <div class="pt-2">
-                            <input type="number" name="rating" placeholder="b.rating" class="form-control" min="1" max="5" required>
+                            <input type="number" name="rating" placeholder="b.rating" pattern="^\d*(\.\d{0,1})?$" class="form-control" step="0.01" min="1" max="5" required>
                         </div>
 
                         <div class="pt-2">
@@ -120,9 +126,21 @@ if(isset($_POST['add']))
             </div>
         </form>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" 
+                crossorigin="anonymous">
+        </script>   
+        <!----------------------------------------------------------------------------------------------->
+        <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous">
+        </script>
+        <!----------------------------------------------------------------------------------------------->
+        <script>
+        $(".alert").alert('close')
+        </script>
+        <!----------------------------------------------------------------------------------------------->
 
     </body>
-
     </html>

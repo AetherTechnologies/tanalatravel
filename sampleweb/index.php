@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#contact" id="#">CONTACT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#aboutus" id="">ABOUT US</a>
+                    <a class="nav-link" href="#aboutus" name="aboutus">ABOUT US</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link custom-btn" href="signin.php">SIGN IN</a>
@@ -81,7 +81,6 @@
     <!-- dropdown filter -->
 </form>
 
-
 <!-- book form -->
 <form method="POST">
     <div class="row">
@@ -89,17 +88,6 @@
         include("connect.php");
         $result = mysqli_query($con,"SELECT * FROM bookings");
         $n1 = mysqli_num_rows($result);
-            //$row = mysqli_fetch_array($result);
-            // $i=0;
-            // while($i < $n1)
-            // {     
-            // $b1=mysqli_result($result,$i,"booking_name");
-            // $b2=mysqli_result($result,$i,"booking_price");
-            // $b3=mysqli_result($result,$i,"booking_description");
-            // $b4=mysqli_result($result,$i,"booking_type");
-            // $b5=mysqli_result($result,$i,"booking_rating");
-            // $b6=mysqli_result($result,$i,"booking_location");     
-            // MYSQL_RESULT was deprecated in PHP 5.5.0 :(((((((
             
         if($n1 > 0)
         {
@@ -108,12 +96,12 @@
         ?>
                 <div class="col-md-3 d-flex my-2 mx-auto justify-content-center">
                     <div class="card">                
-                        <img src="uploads\<?= $data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
+                        <img src="<?= $data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
                         <div class="card-body">                   
                             <h5 class="card-title" name="booking_name"><?= $data['booking_name'] ?></h5>
                             <p class="card-text" name="booking_type"><strong><?= $data['booking_type'] ?></strong></p>
                             <p class="card-text" name="booking_description"><strong>Description:</strong><?= $data['booking_description'] ?></p>
-                            <p class="card-text" name="booking_price"><strong>Price:</strong><?= $data['booking_price'] ?></p>
+                            <p class="card-text" name="booking_price"><strong>Price:</strong>&#8369;<?= $data['booking_price'] ?></p>
                             <p class="card-text" name="booking_rating"><strong>Rating:</strong><?= $data['booking_rating'] ?></p>
                             <p class="card-text" name="booking_location"><strong>Location:</strong><?= $data['booking_location'] ?></p>
                             <button type="submit" class="btn btn-primary" name="book">Book</a>
@@ -249,11 +237,18 @@ Phasellus vitae porta felis, in tristique risus. Integer id venenatis lorem. Fus
     
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" 
+crossorigin="anonymous">
+</script>
+
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous">
+</script>
+
 <script>
 $(function(){
     var navbar = $('.navbar');
