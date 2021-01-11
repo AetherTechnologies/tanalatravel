@@ -2,7 +2,7 @@
 include('connect.php');
 if(isset($_POST['add']))
 {
-    $name = $_POST['name'];
+    $name = strtoupper($_POST['name']);
     $price = $_POST['price'];
     $desc = $_POST['description'];
     $type = $_POST['type'];
@@ -76,7 +76,7 @@ if(isset($_POST['add']))
         <form method="POST" enctype='multipart/form-data'>
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class=" col-xl-3 col-lg-6 col-md-6 pt-5">
+                    <div class="col-xl-3 col-lg-6 col-md-6 pt-5">
                         <h1>Add</h1>
 
                         <div class="pt-3">
@@ -113,16 +113,16 @@ if(isset($_POST['add']))
 
                         <div class="pt-2">
                             <button type="submit" name="add" class="btn btn-success">Add</button>
+                            <a href="index.php" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        
 
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-        </script>
     </body>
 
     </html>
