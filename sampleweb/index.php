@@ -264,6 +264,7 @@ $(function(){
         alert('This Is About Us');
     });
 });
+
 </script>
 <!----------------------------------------------------->
 <!-- optional search function -->

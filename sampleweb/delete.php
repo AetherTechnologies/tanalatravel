@@ -1,14 +1,16 @@
 <?php
-    if(isset($_POST['delete'])){
+  
     include('connect.php');
-    $bid = $_POST['bid'];
-
+    if(isset($_GET['delete'])){
+        
+        $bid = $_GET['delete'];
          $query="DELETE FROM bookings WHERE `bookings`.`bookingID` = $bid";        
          mysqli_query($con, $query);
+
      }
 ?>
 
-    <html lang="en">
+    <html lang="en"> 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,20 +57,19 @@
                     <table class="table my-2" id="myTable">                
                         <thead>
                             <tr class="table-success">
-                            <th scope="col">ID</th>
-                            <th scope="col">name</th>
-                            <th scope="col">image</th>
-                            <th scope="col">price</th>
-                            <th scope="col">description</th>
-                            <th scope="col">type</th>
-                            <th scope="col">rating</th>
-                            <th scope="col">location</th>
-                            <th class=""></th>
-                            <th class=""></th>
+                                <th scope="col">ID</th>
+                                <th scope="col">name</th>
+                                <th scope="col">image</th>
+                                <th scope="col">price</th>
+                                <th scope="col">description</th>
+                                <th scope="col">type</th>
+                                <th scope="col">rating</th>
+                                <th scope="col">location</th>
+                                <th class="">Actions</th>
                             </tr>
                         </thead>
                     <tbody>
-                    <form method="POST">
+                    <form method="GET">
                         <?php 
                             include("connect.php");
                             $sql = "SELECT * FROM bookings";
@@ -76,8 +77,7 @@
                             //  if($n1 > 0){
                             //      foreach($result as $key => $data){               
                             if($result = mysqli_query($con,$sql)){
-                                while($row = mysqli_fetch_assoc($result))
-                                {           
+                                while($row = mysqli_fetch_assoc($result)):        
                                     $id = $row['bookingID'];
                                     $name = $row['booking_name'];
                                     $image = $row['booking_image'];
@@ -86,36 +86,38 @@
                                     $type = $row['booking_type'];
                                     $rating = $row['booking_rating'];
                                     $location = $row['booking_location'];
-                        ?>
+                                ?>
                             <tr> 
-                            <th><?= $id ?><input type="hidden " name="bid" value="<?= $id ?>"></td>
-                            <td><?= $name ?></td>
-                            <td><img src="<?= $image ?>"width="100px" height="100px"></td>
-                            <td><?= $price ?></td>
-                            <td><?= $description ?></td>
-                            <td><?= $type ?></td>
-                            <td><?= $rating ?></td>
-                            <td><?= $location ?></td> 
-                            <td><button type="submit" class="btn btn-primary" name="update">
-                                update
-                            </button></td>
-                            <!-- <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> -->
-                            <td>                         
-                            <button type="submit" class="btn btn-danger" name="delete">                         
-                                delete
-                            </button></td>
+                                <td><?= $id ?></td>
+                                <td><?= $name ?></td>
+                                <td><img src="<?= $image ?>"width="100px" height="100px"></td>
+                                <td><?= $price ?></td>
+                                <td><?= $description ?></td>
+                                <td><?= $type ?></td>
+                                <td><?= $rating ?></td>
+                                <td><?= $location ?></td> 
+                                <td><button type="submit" class="btn btn-primary mx-2" name="update">
+                                    update
+                                </button>
+                                <!-- <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> -->
+                                                      
+                                <a class="btn btn-danger" name="delete" href="?delete=<?= $id ?>">                         
+                                    delete
+                                </button>
+                                </td>
                             </tr> 
+                        <?php endwhile; ?>
                         </form>                                          
                     </tbody> 
-                    <?php
+                        <?php
                             //      }
                             //  }
-                            }                       
-                        }
-                        else{
-                                echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
+                                                       
                             }
-                    ?>                                   
+                            else{
+                                    echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
+                                }
+                        ?>                                   
                 </table>
         </div>
                 
@@ -147,7 +149,7 @@
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
