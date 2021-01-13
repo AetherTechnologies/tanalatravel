@@ -11,23 +11,23 @@ else
     $type = $_POST['type'];
     $rating = $_POST['rating']; 
     $location = $_POST['location'];
-    $image = "uploads/".$_FILES['bookingimage']['name'];
-    //$target_dir = ""; dont delete
+    $image = $_FILES['bookingimage']['name'];
+    $target_dir = "uploads/"; 
     $target_file = basename($_FILES["bookingimage"]["name"]);
-
+    
     // Select file type
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
     // Valid file extensions
     $extensions_arr = array("jpg","jpeg","png","jfif");
 
-    // Get Image Dimension
-    $fileinfo = getimagesize($_FILES["bookingimage"]["tmp_name"]);
-    $width = $fileinfo[0];
-    $height = $fileinfo[1];
+    // Get Image Dimension *DONT DELETE FOR REFERENCE*
+    // $fileinfo = getimagesize($_FILES["bookingimage"]["tmp_name"]);
+    // $width = $fileinfo[0];
+    // $height = $fileinfo[1];
 
     // Check image extension
-    if(! in_array($imageFileType,$extensions_arr) ){
+    if(! in_array($imageFileType,$extensions_arr)){
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         image extension must be jpg,jpeg,png,jfif<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
@@ -39,7 +39,7 @@ else
         </div>';
     }
 
-    // // Check image dimensions
+    // // Check image dimensions *DONT DELETE FOR REFERENCE*
     // else if($width > "300" || $height > "350"){
     //     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
     //     File size too big must be within 300 x 350<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -49,17 +49,17 @@ else
     // Upload image
     else{
         // Insert record
-        $query="INSERT INTO bookings (`booking_image`, `booking_name`,`booking_price`, `booking_description`, `booking_type`, `booking_rating`, `booking_location`) VALUES ('$image','$name', '$price' ,'$desc','$type','$rating','$location')";
+        $query="INSERT INTO bookings (`image_path`, `booking_image`, `booking_name`,`booking_price`, `booking_description`, `booking_type`, `booking_rating`, `booking_location`) VALUES ('$target_dir','$image','$name', '$price' ,'$desc','$type','$rating','$location')";
         mysqli_query($con, $query);
 
         // Upload file
-        //move_uploaded_file($_FILES['bookingimage']['tmp_name'],$target_dir.$image);
-        move_uploaded_file($_FILES['bookingimage']['tmp_name'],$image);
+        move_uploaded_file($_FILES['bookingimage']['tmp_name'],$target_dir.$image);
+        //move_uploaded_file($_FILES['bookingimage']['tmp_name'],$image);
 
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Item successfully Added!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';   
-        // else{
+        // else{ *DONT DELETE FOR REFERENCE*
         //     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         //     Problem in uploading to database<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         //     </div>';
@@ -79,7 +79,7 @@ else
     </head>
 
     <body style=background:#fffff>
-        <form method="POST" enctype='multipart/form-data'>
+        <form method="POST" enctype="multipart/form-data">
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-xl-3 col-lg-6 col-md-6 pt-5">
@@ -102,15 +102,14 @@ else
                         </div>
 
                         <div class="pt-2">
-                        <!-- <label for="cars">Choose a type:</label> -->
                             <select name="type" class="form-control">
-                            <option value="Hotel" class="form-control">Hotel</option>
-                            <option value="Flight" class="form-control">Flight</option>
+                                <option value="Hotel" class="form-control">Hotel</option>
+                                <option value="Flight" class="form-control">Flight</option>
                             </select>
                         </div>
 
                         <div class="pt-2">
-                            <input type="number" name="rating" placeholder="b.rating" pattern="^\d*(\.\d{0,1})?$" class="form-control" step="0.01" min="1" max="5" required>
+                            <input type="number" name="rating" placeholder="b.rating" class="form-control" step="0.01" min="1" max="5" required>
                         </div>
 
                         <div class="pt-2">
@@ -119,7 +118,6 @@ else
 
                         <div class="pt-2">
                             <button type="submit" name="add" class="btn btn-success">Add</button>
-                            <a href="index.php" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                 </div>

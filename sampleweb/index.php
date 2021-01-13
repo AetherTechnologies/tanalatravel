@@ -66,17 +66,17 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
         </svg>
-        <span class="visually-hidden">Button</span>
-    </button>          
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <!-- <span class="visually-hidden">Button</span> -->
+    </button>
+    <input id="myInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <!-- Search -->
 
     <!-- dropdown filter -->
-    <div class="dropdown">
+    <div>
         <a href="add.php" class="btn btn-success me-2" aria-expanded="false">Add</a>
     </div>
-    <div class="dropdown">
-        <a href="delete.php" class="btn btn-danger" aria-expanded="false">Delete</a>
+    <div>
+        <a href="edit.php" class="btn btn-danger" aria-expanded="false">Edit</a>
     </div>
     <!-- dropdown filter -->
 </form>
@@ -94,18 +94,18 @@
             foreach($result as $key => $data)
             {               
         ?>
-                <div class="col-md-3 d-flex my-2 mx-auto justify-content-center">
+                <div class="col-xl-3 col-lg-3 col-md-3 d-flex my-2 mx-auto">
                     <div class="card">                
-                        <img src="<?= $data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
-                        <div class="card-body">                   
-                            <h5 class="card-title" name="booking_name"><?= $data['booking_name'] ?></h5>
+                        <img src="<?= $data["image_path"].$data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
+                        <div id="myTable" class="card-body">                   
+                            <p class="card-title" name="booking_name"><strong><?= $data['booking_name'] ?></strong></p>
                             <p class="card-text" name="booking_type"><strong><?= $data['booking_type'] ?></strong></p>
                             <p class="card-text" name="booking_description"><strong>Description:</strong><?= $data['booking_description'] ?></p>
                             <p class="card-text" name="booking_price"><strong>Price:</strong>&#8369;<?= $data['booking_price'] ?></p>
                             <p class="card-text" name="booking_rating"><strong>Rating:</strong><?= $data['booking_rating'] ?></p>
                             <p class="card-text" name="booking_location"><strong>Location:</strong><?= $data['booking_location'] ?></p>
                             <button type="submit" class="btn btn-primary" name="book">Book</a>
-                        </div>             
+                        </div>
                     </div> 
                 </div>
         <?php
@@ -248,7 +248,7 @@ crossorigin="anonymous">
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous">
 </script>
-
+<!----------------------------------------------------->
 <script>
 $(function(){
     var navbar = $('.navbar');
@@ -264,6 +264,28 @@ $(function(){
         alert('This Is About Us');
     });
 });
+</script>
+<!----------------------------------------------------->
+<script>
+        function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } 
+            else {
+                tr[i].style.display = "none";
+            }
+            }
+        }
+        }
 </script>
 <!----------------------------------------------------->
 <!-- optional search function -->
