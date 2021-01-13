@@ -21,7 +21,7 @@
         } else {
             $pageno = 1;
         }
-        $no_of_records_per_page = 10;
+        $no_of_records_per_page = 1;
         $offset = ($pageno-1) * $no_of_records_per_page;
 
         include('connect.php');
@@ -39,8 +39,7 @@
         $sql = "SELECT * FROM bookings LIMIT $offset, $no_of_records_per_page";
         $res_data = mysqli_query($con,$sql);
         while($row = mysqli_fetch_array($res_data)){
-         ?>
-        echo'    
+         ?> 
             <tr>
                 <td><?= $row['bookingID'] ?></td>
                 <td><?= $row['booking_name'] ?></td>
