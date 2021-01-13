@@ -94,7 +94,7 @@ else
                         </div>
 
                         <div class="pt-2">
-                            <input type="number" name="price" placeholder="b.price" class="form-control" required>
+                            <input type="number" name="price" placeholder="b.price" class="form-control" step="0.01" min="1" required>
                         </div>
 
                         <div class="pt-2">
@@ -118,21 +118,23 @@ else
 
                         <div class="pt-2">
                             <button type="submit" name="add" class="btn btn-success">Add</button>
+                            <a href="index.php" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
-                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" 
-                crossorigin="anonymous">
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" 
+            crossorigin="anonymous">
         </script>   
         <!----------------------------------------------------------------------------------------------->
         <script
-        src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous">
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">
         </script>
         <!----------------------------------------------------------------------------------------------->
         <script>
