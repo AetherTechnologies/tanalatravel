@@ -25,11 +25,6 @@
         $offset = ($pageno-1) * $no_of_records_per_page;
 
         include('connect.php');
-        // Check connection
-        // if (mysqli_connect_errno()){
-        //     echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        //     die();
-        // }
 
         $total_pages_sql = "SELECT COUNT(*) FROM bookings";
         $result = mysqli_query($con,$total_pages_sql);
@@ -47,10 +42,9 @@
                 <td><?= $row['booking_description'] ?></td>
                 <td><?= $row['booking_rating'] ?></td>
             </tr>
-    <?php
-        }
-        mysqli_close($con);
-    ?>
+        <?php
+            }
+        ?>
     
     </table>
     <ul class="pagination">
