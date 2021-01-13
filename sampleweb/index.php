@@ -99,11 +99,11 @@
                         <img src="<?= $data["image_path"].$data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
                         <div id="myTable" class="card-body">                   
                             <p class="card-title" name="booking_name"><strong><?= $data['booking_name'] ?></strong></p>
-                            <p class="card-text" name="booking_type"><strong><?= $data['booking_type'] ?></strong></p>
-                            <p class="card-text" name="booking_description"><strong>Description:</strong><?= $data['booking_description'] ?></p>
-                            <p class="card-text" name="booking_price"><strong>Price:</strong>&#8369;<?= $data['booking_price'] ?></p>
-                            <p class="card-text" name="booking_rating"><strong>Rating:</strong><?= $data['booking_rating'] ?></p>
-                            <p class="card-text" name="booking_location"><strong>Location:</strong><?= $data['booking_location'] ?></p>
+                            <p class="card-type" name="booking_type"><strong><?= $data['booking_type'] ?></strong></p>
+                            <p class="card-description" name="booking_description"><strong>Description:</strong><?= $data['booking_description'] ?></p>
+                            <p class="card-price" name="booking_price"><strong>Price:</strong>&#8369;<?= $data['booking_price'] ?></p>
+                            <p class="card-rating" name="booking_rating"><strong>Rating:</strong><?= $data['booking_rating'] ?></p>
+                            <p class="card-location" name="booking_location"><strong>Location:</strong><?= $data['booking_location'] ?></p>
                             <button type="submit" class="btn btn-primary" name="book">Book</a>
                         </div>
                     </div> 
