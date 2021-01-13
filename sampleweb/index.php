@@ -1,3 +1,12 @@
+<?php
+    include('connect.php');
+        if (isset($_GET['pageno'])) {
+            $pageno = $_GET['pageno'];
+        } 
+        else {
+            $pageno = 1;
+        }
+?>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -25,7 +34,7 @@
                     <a class="nav-link" href="#aboutus" name="aboutus">ABOUT US</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-btn" href="signin.php">SIGN IN</a>
+                    <a class="nav-link custom-btn" id ="button" href="signin.php">SIGN IN</a>
                 </li>
             </ul>
         </nav>
@@ -54,7 +63,7 @@
         </div>      
     </section>
 
-<section class="pt-6" id="booking">
+<section class="pt-5" id="booking">
 <!-- Booking section -->
 <h1 class="header-center">
 <hr class="">
@@ -82,61 +91,69 @@
 </form>
 
 <!-- book form -->
-<form method="POST">
     <div class="row">
-        <?php 
-        include("connect.php");
-        $result = mysqli_query($con,"SELECT * FROM bookings");
-        $n1 = mysqli_num_rows($result);
+        <?php         
+            $i = 0;
+            $no_of_records_per_page = 8;
+            $offset = ($pageno-1) * $no_of_records_per_page;
+            $total_pages_sql = "SELECT COUNT(*) FROM bookings";
+            $result = mysqli_query($con,$total_pages_sql);
+            $total_rows = mysqli_fetch_array($result)[0];
+            $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+            $sql = "SELECT * FROM bookings LIMIT $offset, $no_of_records_per_page";
+            $res_data = mysqli_query($con,$sql);
             
-        if($n1 > 0)
-        {
-            foreach($result as $key => $data)
-            {               
+            if($no_of_records_per_page > $i){
+                while($row = mysqli_fetch_array($res_data)){
         ?>
                 <div class="col-xl-3 col-lg-3 col-md-3 d-flex my-2 mx-auto">
                     <div class="card">                
-                        <img src="<?= $data["image_path"].$data["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
+                        <img src="<?= $row["image_path"].$row["booking_image"] ?>" class="card-img-top" alt="..." name="booking_image" width="300px" height="350px">
                         <div id="myTable" class="card-body">                   
-                            <p class="card-title" name="booking_name"><strong><?= $data['booking_name'] ?></strong></p>
-                            <p class="card-text" name="booking_type"><strong><?= $data['booking_type'] ?></strong></p>
-                            <p class="card-text" name="booking_description"><strong>Description:</strong><?= $data['booking_description'] ?></p>
-                            <p class="card-text" name="booking_price"><strong>Price:</strong>&#8369;<?= $data['booking_price'] ?></p>
-                            <p class="card-text" name="booking_rating"><strong>Rating:</strong><?= $data['booking_rating'] ?></p>
-                            <p class="card-text" name="booking_location"><strong>Location:</strong><?= $data['booking_location'] ?></p>
-                            <button type="submit" class="btn btn-primary" name="book">Book</a>
+                            <p class="card-name" name="booking_name"><strong><?= $row['booking_name'] ?></strong></p>
+                            <p class="card-type" name="booking_type"><strong><?= $row['booking_type'] ?></strong></p>
+                            <p class="card-description" name="booking_description"><strong>Description:</strong><?= $row['booking_description'] ?></p>
+                            <p class="card-price" name="booking_price"><strong>Price:</strong>&#8369;<?= $row['booking_price'] ?></p>
+                            <p class="card-rating" name="booking_rating"><strong>Rating:</strong><?= $row['booking_rating'] ?></p>
+                            <p class="card-location" name="booking_location"><strong>Location:</strong><?= $row['booking_location'] ?></p>
                         </div>
+                        <button type="submit" class="btn btn-primary m-5" name="book">Book</a>
                     </div> 
                 </div>
         <?php
+                }
             }
-        }
-        else{
-            echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
-        }
+            else{
+                echo '<p class="card-text" name="booking_location"><strong>No data found</strong></p>';
+            }
         ?>
     </div>
-</form>
     
-
+    <!-- Pagination -->
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center pt-5">
-            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
+
             <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+                <a class="page-link" href="?pageno=1">First</a>
             </li>
+            <li class="page-item <?php if($pageno <= 1){ echo " disabled"; } ?>">
+                <a class="page-link" href="<?php if($pageno <= 1){ echo "#"; } else { echo "?pageno=".($pageno - 1); } ?>">Previous</a>
+            </li>
+            <li class="page-item <?php if($pageno >= $total_pages){ echo " disabled"; } ?>">
+                <a class="page-link" href="<?php if($pageno >= $total_pages){ echo "#"; } else {echo "?pageno=".($pageno + 1);} ?>">Next</a>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="?pageno=<?= $total_pages ?>">Last</a>
+            </li>
+
         </ul>
     </nav>
 </section>
 
 
 <!-- Contacts -->
-<section class="pt-6" id="contact">
+<section class="pt-5" id="contact">
     <h1 class="header-center">
     <hr class="">
     Contact
@@ -150,7 +167,7 @@ Phasellus vitae porta felis, in tristique risus. Integer id venenatis lorem. Fus
 </section>
 
 <!-- About us -->
-<section class="pt-6" id="aboutus">
+<section class="pt-5" id="aboutus">
     <h1 class="header-center">
     <hr class="">
     About Us
@@ -254,15 +271,12 @@ $(function(){
     var navbar = $('.navbar');
 	
 	$(window).scroll(function(){
-		if($(window).scrollTop() <= 250){
+		if($(window).scrollTop() <= 650){
 			navbar.removeClass('navbar-scroll');
 		} else {
 			navbar.addClass('navbar-scroll');
 		}
 	});
-    $('.aboutus').on('click', function(){
-        alert('This Is About Us');
-    });
 });
 </script>
 <!----------------------------------------------------->
