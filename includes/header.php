@@ -34,7 +34,7 @@
 <!--- /top-header ---->
 <!--- header ---->
 <div class="header">
-	<div class="container">
+	<div class="container form-inline">
 		<div class="logo wow fadeInDown animated" data-wow-delay=".5s">
 			<a href="index.php">TANALA <span>A Tourist Guide System</span></a>	
 		</div>
@@ -52,7 +52,7 @@
 <div class="footer-btm wow fadeInLeft animated" data-wow-delay=".5s">
 	<div class="container">
 	<div class="navigation">
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default navbar-expand-lg">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -66,8 +66,8 @@
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<nav class="cl-effect-1">
 						<ul class="nav navbar-nav">
-							<li><a href="index.php">Home</a></li>
-							<li><a href="page.php?type=aboutus">About</a></li>
+								<li><a href="index.php">Home</a></li>
+								<li><a href="page.php?type=aboutus">About</a></li>
 								<li><a href="package-list.php">Tour Packages</a></li>
 								<li><a href="page.php?type=privacy">Privacy Policy</a></li>
 								<li><a href="page.php?type=terms">Terms of Use</a></li>

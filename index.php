@@ -16,6 +16,7 @@ include('includes/config.php');
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <link href="css/font-awesome.css" rel="stylesheet">
 <!-- Custom Theme files -->
 <script src="js/jquery-1.12.0.min.js"></script>
@@ -49,6 +50,7 @@ include('includes/config.php');
 
 
 <?php 
+$con = mysqli_connect("localhost", "root","","tms");
 $fetchQuery = mysqli_query($con, "SELECT tbltourpackages.PackageLocation as Analysis_Location
 FROM `tblbooking`
 INNER JOIN tbltourpackages ON tbltourpackages.PackageId = tblbooking.PackageId
@@ -87,11 +89,6 @@ foreach($results as $result)
 <?php }} ?>
 
 
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
 <div><a href="package-list.php" class="view">View More Packages</a></div>
 </div>
 			<div class="clearfix"></div>
