@@ -1,22 +1,22 @@
 <?php 
 // DB credentials.
-$DBHost = "localhost";
-$DBUser = "u627076978_tanalatravelus";
-$DBPass = "EK2$1zqt;Y1";
-$DBName = "u627076978_tanalatraveldb";
-define('DB_HOST','localhost');
-define('DB_USER','u627076978_tanalatravelus');
-define('DB_PASS','EK2$1zqt;Y1');
-define('DB_NAME','u627076978_tanalatraveldb');
-
 // $DBHost = "localhost";
-// $DBUser = "root";
-// $DBPass = "";
-// $DBName = "tms";
+// $DBUser = "u627076978_tanalatravelus";
+// $DBPass = "EK2$1zqt;Y1";
+// $DBName = "u627076978_tanalatraveldb";
 // define('DB_HOST','localhost');
-// define('DB_USER','root');
-// define('DB_PASS','');
-// define('DB_NAME','tms');
+// define('DB_USER','u627076978_tanalatravelus');
+// define('DB_PASS','EK2$1zqt;Y1');
+// define('DB_NAME','u627076978_tanalatraveldb');
+
+$DBHost = "localhost";
+$DBUser = "root";
+$DBPass = "";
+$DBName = "tms";
+define('DB_HOST','localhost');
+define('DB_USER','root');
+define('DB_PASS','');
+define('DB_NAME','tms');
 
 $con = mysqli_connect($DBHost , $DBUser, $DBPass, $DBName);
 
