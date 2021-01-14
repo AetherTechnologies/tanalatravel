@@ -122,6 +122,15 @@
     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
 </div>
 </section>
+
+<section id="inputs">
+    <h1 class="header-center">
+        INPUTS EXAMPLE
+    </h1>
+    <input type="date" name="date" class="form-control"> 
+    <input type="time" name="date" class="form-control"> 
+</div>
+</section>
 </div>
 
 <!------------------------------------------------------------>

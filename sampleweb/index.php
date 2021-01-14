@@ -49,8 +49,8 @@
                 </div>
                 <div class="carousel-item">
                 <img src="images\carousel3.jpg" class="d-block w-100 h-75" alt="images\notfound.jpg">
+                </div>
             </div>
-        </div>
 
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -271,7 +271,7 @@ $(function(){
     var navbar = $('.navbar');
 	
 	$(window).scroll(function(){
-		if($(window).scrollTop() <= 650){
+		if($(window).scrollTop() <= 300){
 			navbar.removeClass('navbar-scroll');
 		} else {
 			navbar.addClass('navbar-scroll');
