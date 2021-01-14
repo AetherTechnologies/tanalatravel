@@ -28,6 +28,7 @@ var myLong = 0;
             coords:{lat:myLat,lng:myLong},
             content:'<h1>Current Location</h1>'
           },
+          
           {
             coords:{lat:14.587830982,lng:120.97166278},
             iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',

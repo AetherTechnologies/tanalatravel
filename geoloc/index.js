@@ -8,6 +8,7 @@ function initMap() {
       zoom: 14,
       center: { lat: 12.8797, lng: 121.7740 },
     });
+    
     directionsRenderer.setMap(map);
     
     if (navigator.geolocation) {
