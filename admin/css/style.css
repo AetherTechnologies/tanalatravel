@@ -4218,10 +4218,11 @@ h4.title, .hightchat-grid1 h3 {
     margin-top: 6em;
 }
 #map, #map1, #map2, #map3 {
-    height: 200px !important;
+    height: 200px;
 }
 .grid-form {
     width: 100%;
+    height: 2000px;
 }
 .widget_1_box1 {
     padding: 0;

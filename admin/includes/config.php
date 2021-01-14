@@ -13,4 +13,5 @@ catch (PDOException $e)
 {
 exit("Error: " . $e->getMessage());
 }
+$con = mysqli_connect("localhost", "root", "", "tms");
 ?>
