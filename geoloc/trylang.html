@@ -7,11 +7,15 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 50%;
       }
 
       /* Optional: Makes the sample page fill the window. */
@@ -22,37 +26,41 @@
         padding: 0;
       }
     </style>
+
     <script>
       function initMap() {
-        const myLatlng = { lat: -25.363, lng: 131.044 };
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 3,
-          center: myLatlng,
-        });
-        // Create the initial InfoWindow.
-        let infoWindow = new google.maps.InfoWindow({
-          content: "Click the map to get Lat/Lng!",
-          position: myLatlng,
-        });
-        infoWindow.open(map);
-        // Configure the click listener.
-        map.addListener("click", (mapsMouseEvent) => {
-          // Close the current InfoWindow.
-          infoWindow.close();
-          // Create a new InfoWindow.
-          infoWindow = new google.maps.InfoWindow({
-            position: mapsMouseEvent.latLng,
-          });
-          infoWindow.setContent(
-            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-          );
-          infoWindow.open(map);
-          
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 8,
         });
       }
+
+      function placeMarkerAndPanTo(latitude,longhitude, map) {
+        new google.maps.Marker({
+          position: {lat: latitude , lng: longhitude},
+          map: map,
+        });
+        map.panTo({lat: latitude, lng: longhitude});
+      }
+
+      $(document).ready(function(){
+        $("#myBtn").on('click', function(){
+            var lng = $("#lng").val();
+            var lat = $("#lat").val();
+            var latitude = parseFloat(lat);
+            var longhitude = parseFloat(lng);
+            console.log(latitude);
+            console.log(longhitude);
+            placeMarkerAndPanTo(latitude,longhitude,map);
+        });
+      });
+
     </script>
   </head>
   <body>
     <div id="map"></div>
+    <input id="lng" placeholder="longhitude"/>
+    <input id="lat" placeholder="latitude" />
+    <button id="myBtn">Mark</button>
   </body>
 </html>

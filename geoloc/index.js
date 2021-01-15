@@ -22,6 +22,7 @@ function initMap() {
         myLat = 121.7740;
         console.log('Default Location');
     }
+    
     function setMarker(position){
         var markers = [
             {
