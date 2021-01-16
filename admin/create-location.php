@@ -52,7 +52,7 @@ $query2 = mysqli_query($con, $sql);
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap&libraries=&v=weekly" defer></script>
-<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/morris.css" type="text/css"/>
 <link href="css/font-awesome.css" rel="stylesheet"> 
@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 #map{
-	width: 1000px;
+	width: 100%;
 	height: 60vh;
 	margin-bottom: 10px;
 }
@@ -146,63 +146,116 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="tab-pane active" id="horizontal-form">
 							<form class="form-horizontal" name="package" method="POST" enctype="multipart/form-data">
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Type</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" name="locationtype" id="locationtype" placeholder="Location Type" required>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Type</label>
+											</div>
+											<div class="col-sm-10">
+												<input type="text" class="form-control1" name="locationtype" id="locationtype" placeholder="Location Type" required>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Name</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" name="locationname" id="locationname" placeholder="Location Name" required>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Name</label>
+											</div>
+											<div class="col-sm-10">
+												<input type="text" class="form-control1" name="locationname" id="locationname" placeholder="Location Name" required>
+											</div>
+										</div>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Longitude</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" name="locationlongitude" id="locationlongitude" placeholder="Location Longitude" required>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Longhitude</label>
+											</div>
+											<div class="col-sm-10">
+												<input type="text" class="form-control1" name="locationlongitude" id="locationlongitude" placeholder="Location Longitude" required>
+											</div>
+										</div>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Latitude</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" name="locationlatitude" id="locationlatitude" placeholder="Location Latitude" required>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Latitude</label>
+											</div>
+											<div class="col-sm-10">
+												<input type="text" class="form-control1" name="locationlatitude" id="locationlatitude" placeholder="Location Latitude" required>
+											</div>
+										</div>
 									</div>
 								</div>
 
-								<div id="map"></div>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-lg-12">
+										<div id="map"></div>
+										</div>
+									</div>
+								</div>
 
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Price</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" name="locationprice" id="locationprice" placeholder="Location Price" required>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Price</label>
+											</div>
+											<div class="col-sm-10">
+												<input type="text" class="form-control1" name="locationprice" id="locationprice" placeholder="Location Price" required>
+											</div>
+										</div>
 									</div>
 								</div>		
 
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Status</label>
-									<div class="col-sm-8">
-										<textarea class="form-control" rows="5" cols="50" name="locationstatus" id="locationstatus" placeholder="Location Status" required></textarea> 
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Status</label>
+											</div>
+											<div class="col-sm-10">
+												<textarea class="form-control" rows="5" cols="50" name="locationstatus" id="locationstatus" placeholder="Location Status" required></textarea> 
+											</div>
+										</div>
 									</div>
 								</div>		
 
 								<div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Location Image</label>
-									<div class="col-sm-8">
-										<input type="file" name="locationimage" id="locationimage" required>
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-sm-2 text-center">
+												<label for="focusedinput" class="control-label">Location Image</label>
+											</div>
+											<div class="col-sm-10">
+												<input type="file" name="locationimage" id="locationimage" required>
+											</div>
+										</div>
 									</div>
 								</div>	
-
-
-								<div class="row">
-									<div class="col-sm-8 col-sm-offset-2">
-										<button type="submit" name="submit" class="btn-primary btn">Create</button>
-
-										<button type="reset" class="btn-inverse btn">Reset</button>
+	  							<div class="container-fluid">
+									<div class="row justify-content-center">
+										<div class="col-sm-3">
+											<div class="row">
+												<div class="col-sm-6">
+													<button type="submit" name="submit" class="btn-primary btn w-100">Create</button>
+												</div>
+												<div class="col-sm-6">
+													<button type="reset" class="btn-inverse btn w-100">Reset</button>
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>	
+								</div>
 							</form>	
 						</div>
 
