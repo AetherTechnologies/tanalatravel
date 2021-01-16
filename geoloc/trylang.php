@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <?php
-include('connect.php');
+// include('connect.php');
 
-if(isset($_GET['submit'])){
-    $loc_name = $_GET['loc_name'];
-    $sql = mysqli_query($con, "SELECT * FROM tbllocation WHERE loc_name = '$loc_name'");
-    $row = mysqli_fetch_assoc($sql);
+// if(isset($_GET['submit'])){
+//     $loc_name = $_GET['loc_name'];
+//     $sql = mysqli_query($con, "SELECT * FROM tbllocation WHERE loc_name = '$loc_name'");
+//     $row = mysqli_fetch_assoc($sql);
 
-    $long = $row['loc_long'];
-    $lat = $row['loc_lat'];
-}
+//     $long = $row['loc_long'];
+//     $lat = $row['loc_lat'];
+// }
 ?>
 
 <head>
@@ -23,14 +23,15 @@ if(isset($_GET['submit'])){
        * element that contains the map. */
         
         #map {
+            
             height: 100%;
+            width: 100%;
         }
         /* Optional: Makes the sample page fill the window. */
-        
         html,
         body {
+            margin: 0px;
             height: 100%;
-            margin: 0;
             padding: 0;
         }
     </style>
@@ -46,7 +47,7 @@ if(isset($_GET['submit'])){
                 },
                 zoom: 6,
             });
-            map.setOptions({ minZoom: 6, maxZoom: 15});
+            map.setOptions({ minZoom: 4, maxZoom: 20});
         }
         var prev_window = false;
         function placeMarkerAndPanTo(latitude, longhitude, location_name, location_type, location_price, location_status, location_image, map) {
@@ -68,7 +69,7 @@ if(isset($_GET['submit'])){
 
         const contentString =
         '<div class="container">' +
-        '<img src="images/'+ location_image +'" width="200px" height="200px">' +
+        '<img src="../images/'+ location_image +'" width="250px" height= "250px">' +
         '<h3>'+ location_name +'</h3>' +
         '<p>Price:'+' '+ location_price + '</p>' +
         '<p>Location:'+' '+ location_status + '</p>' +
@@ -77,8 +78,8 @@ if(isset($_GET['submit'])){
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString,
-                minWidth: 200,
-                maxWidth: 200,
+                minWidth: 250,
+                maxWidth: 250,
             });
 
             marker.addListener("click", () => {
@@ -164,7 +165,7 @@ if(isset($_GET['submit'])){
 <body>
     <div id="map"></div>
         <!-- <input type="text" name="loc_name" id="loc_name" placeholder="Search location" />
-        <button name="submit" id="myBtn">Seach</button>          -->
+        <button name="submit" id="myBtn">Seach</button> -->
 </body>
 
 </html>

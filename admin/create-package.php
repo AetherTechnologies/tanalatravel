@@ -38,8 +38,7 @@ $error="Something went wrong. Please try again";
 }
 
 }
-
-	?>
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -74,7 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
-		</style>
+</style>
 
 </head> 
 <body>
@@ -82,10 +81,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <!--/content-inner-->
 <div class="left-content">
 	   <div class="mother-grid-inner">
-              <!--header start here-->
+<!--header start here-->
 <?php include('includes/header.php');?>
 							
-				     <div class="clearfix"> </div>	
+				    <div class="clearfix"> </div>	
 				</div>
 <!--heder end here-->
 	<ol class="breadcrumb">
@@ -93,9 +92,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ol>
 		<!--grid-->
  	<div class="grid-form">
- 
 <!---->
-  <div class="grid-form1">
+
+<div class="grid-form1">
+
+
+
+<!-- GEOLOCATION MAP -->
+<?php
+include('../geoloc/trylang.php');
+?>
+
+
+
   	       <h3>Create Package</h3>
   	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
