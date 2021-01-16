@@ -40,7 +40,7 @@
     $(document).ready(function() {
     var max_fields = 10;
     var wrapper = $(".parentdiv");
-    var add_button = $(".add_form_field");
+    var add_button = $(".additinerary");
 
     var x = 1;
 
@@ -48,7 +48,7 @@
         e.preventDefault();
         if (x < max_fields) {
             x++;
-            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
+            $(wrapper).append('<div><input type="text" name="itinerary"/><a href="#" class="delete">Delete</a></div>'); //add input box
         } else {
             alert('You Reached the limits')
         }
@@ -65,10 +65,9 @@
 
 <body>
     <div id="container" class="parentdiv">
-
-    <input type="text" id="member" name="member" value="">Number of members: (max. 10)<br />
+    <input type="text" id="itinerarymain" name="itinerarymain" value="">itinerary<br />
     <!-- <a href="#" id="filldetails" onclick="addFields()">Fill Details</a> -->
-    <button type="button" name="add_form_field  " class="add_form_field">Add</button> 
+    <button type="button" name="additinerary" class="additinerary">Add</button> 
     </div>
 
 </body>

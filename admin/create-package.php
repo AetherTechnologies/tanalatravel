@@ -142,7 +142,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="col-sm-8">
 										<textarea class="form-control" rows="5" cols="50" name="packagedetails" id="packagedetails" placeholder="Package Details" required></textarea> 
 									</div>
-								</div>															
+								</div>
+								
+						<script>
+								$(document).ready(function() {
+								var max_fields = 10;
+								var wrapper = $(".parentitinerary");
+								var add_button = $(".additinerary");
+
+								var x = 1;
+
+								$(add_button).click(function(e) {
+									e.preventDefault();
+									if (x < max_fields) {
+										x++;			
+										//Add itinerary
+										$(wrapper).append('<label for="focusedinput" class="col-sm-2 control-label">More Itinerary</label><div class="col-sm-8"><input type="text" class="form-control1" name="moreitinerary" id="moreitinerary" placeholder="Itinerary" required></div>');
+									} else {
+										alert('You Reached the limits')
+									}
+								});
+
+								$(wrapper).on("click", ".delete", function(e) {
+									e.preventDefault();
+									$(this).parent('div').remove();
+									x--;
+								})
+							});
+    					</script>
+															
+<div class="form-group">
+								<div class="parentitinerary">
+									<label for="focusedinput" class="col-sm-2 control-label">Package Itinerary</label>
+									<div class="col-sm-8">
+									<input type="text" class="form-control1" name="itinerarymain" id="itinerarymain" placeholder="Itinerary" required>
+									</div>
+									<button type="button" name="additinerary" class="additinerary">Add</button>
+								</div>
+								</div>
 <div class="form-group">
 									<label for="focusedinput" class="col-sm-2 control-label">Package Image</label>
 									<div class="col-sm-8">
