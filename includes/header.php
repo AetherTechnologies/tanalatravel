@@ -74,7 +74,8 @@
 								<li><a href="page.php?type=contact">Contact Us</a></li>
 								<?php if($_SESSION['login'])
 {?>
-								<li>Need Help?<a href="#" data-toggle="modal" data-target="#myModal3"> / Message Us </a>  </li>
+								<li><a href="usercreate-package.php">Create Package</a></li>
+								<li>Need Help?<a href="#" data-toggle="modal" data-target="#myModal3"> / Message Us </a>  </li>							
 								<?php } else { ?>
 								<li><a href="enquiry.php"> Inquiry </a>  </li>
 								<?php } ?>

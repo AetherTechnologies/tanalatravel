@@ -58,6 +58,9 @@ i.fa.fa-home {
 	height: 36px;
     line-height: 35px;
 }
+.grid-form1 #h-margin{
+    margin-top: 2rem;
+}
 ul.tp-hd-lft{
     float: left;
 }
@@ -4383,4 +4386,10 @@ ul.set-1 {
     border-left: 4px solid #4caf50;
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.itinerary input , .itinerary textarea{
+    margin: 0.5rem 0px;
+}
+.card{
+    margin-left: 225px;
 }

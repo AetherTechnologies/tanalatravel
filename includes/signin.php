@@ -33,13 +33,6 @@ echo "<script type='text/javascript'> document.location = 'package-list.php'; </
 						<div class="modal-body modal-spa">
 							<div class="login-grids">
 								<div class="login">
-										<div class="login-left">
-												<ul>
-													<li><a class="fb" href="#"><i></i>Facebook</a></li>
-													<li><a class="goog" href="#"><i></i>Google</a></li>
-													
-												</ul>
-											</div>
 									<div class="login-right">
 										<form method="post">
 											<h3>Signin with your account </h3>
