@@ -23,7 +23,7 @@ if(isset($_GET['submit'])){
        * element that contains the map. */
         
         #map {
-            height: 50%;
+            height: 100%;
         }
         /* Optional: Makes the sample page fill the window. */
         
@@ -36,6 +36,8 @@ if(isset($_GET['submit'])){
     </style>
 
     <script>
+    let markers = [];
+    let map;
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {
@@ -44,75 +46,125 @@ if(isset($_GET['submit'])){
                 },
                 zoom: 6,
             });
+            map.setOptions({ minZoom: 6, maxZoom: 15});
         }
-
-        function placeMarkerAndPanTo(latitude, longhitude, map) {
-            const marker = new google.maps.Marker({
+        var prev_window = false;
+        function placeMarkerAndPanTo(latitude, longhitude, location_name, location_type, location_price, location_status, location_image, map) {
+            console.log("Run");
+            let imgUrl = location_image !== null ? "blank" : location_image;
+           // markers.push(
+            var marker = new google.maps.Marker({
                 position: {
                     lat: latitude,
                     lng: longhitude
                 },
                 map: map,
             });
-            map.panTo({
-                lat: latitude,
-                lng: longhitude
-            });
+        //    );
+            // map.panTo({
+            //     lat: latitude,
+            //     lng: longhitude
+            // });
 
         const contentString =
-        '<img src="images/1.jpg">' +
-        '<input type="text" id="str1" value="" />' +
-        '<input type="text" id="str1" value="" />' +
-        '<input type="text" id="str1" value="" />' +
-        '<input type="text" id="str1" value="" />' +
-        '<input type="text" id="str1" value="" />';
+        '<div class="container">' +
+        '<img src="images/'+ location_image +'" width="200px" height="200px">' +
+        '<h3>'+ location_name +'</h3>' +
+        '<p>Price:'+' '+ location_price + '</p>' +
+        '<p>Location:'+' '+ location_status + '</p>' +
+        '<p>Type:'+' '+ location_type + '</p>' +
+        '</div>';
 
-            const infowindow = new google.maps.InfoWindow({
+            var infowindow = new google.maps.InfoWindow({
                 content: contentString,
+                minWidth: 200,
+                maxWidth: 200,
             });
 
             marker.addListener("click", () => {
+                if(prev_window){
+                    prev_window.close();
+                }
+                prev_window = infowindow;
                 infowindow.open(map, marker);
             });
         }
 
         $(document).ready(function() {
-            $("#myBtn").on('click', function() {
-                
-                var locationInput = $('#loc_name').val();
-                console.log(locationInput);
-                $.ajax({
-                    url: "http://localhost/tanalatravel/geoloc/result.php",
+            // $("#myBtn").on('click', function() {
+            //     //event.preventDefault();
+            //     var locationInput = $('#loc_name').val();
+            //     //console.log(locationInput);
+            //     $.ajax({
+            //         url: "http://localhost:8080/sandbox/tanalatravel/geoloc/result.php",
+            //         //url: "http://localhost/tanalatravel/geoloc/result.php",
+            //         dataType: 'json',
+            //         type: 'POST',
+            //         data:{
+            //             input: locationInput,
+            //         },
+            //         success : function (e){
+            //             console.log("Fetched");
+            //             var row = JSON.parse(JSON.stringify(e));
+            //             console.log(row[0].loc_long);
+            //             console.log(row.length);
+            //             // var loc_name = parseFloat(row.Location_name);
+            //             // var loc_price = parseFloat(row.Price);
+            //             // var loc_status = parseFloat(row.Status);
+            //             // var loc_image = parseFloat(row.Image);
+            //             //placeMarkerAndPanTo(lat, long, map);
+            //             for (var i = 0; i < row.length; i++){
+            //                 let longhitude = row[i].loc_long;
+            //                 let latitude = row[i].loc_lat;
+            //                 placeMarkerAndPanTo(latitude,longhitude,map);
+            //             }
+            //         },
+            //         error: function (error){
+            //             console.log(error);
+            //         }
+            //     });
+            // });
+            $.ajax({
+                    url: "http://localhost:8080/sandbox/tanalatravel/geoloc/result.php",
+                    //url: "http://localhost/tanalatravel/geoloc/result.php",
                     dataType: 'json',
-                    type: 'POST',
-                    data: {
-                        location: locationInput,
-                    },
+                    type: 'GET',
                     success : function (e){
                         console.log("Fetched");
-                        //console.log(e);
-                        var coor = JSON.parse(JSON.stringify(e));
-                        console.log(coor.Longhitude);
-                        // var long = parseFloat(coor.Latitude);
-                        // var lat = parseFloat(coor.Longhitude);
-
-                        // placeMarkerAndPanTo(lat, long, map);
+                        var row = JSON.parse(JSON.stringify(e));
+                        // var loc_name = parseFloat(row.Location_name);
+                        // var loc_price = parseFloat(row.Price);
+                        // var loc_status = parseFloat(row.Status);
+                        // var loc_image = parseFloat(row.Image);
+                        //placeMarkerAndPanTo(lat, long, map);
+                        for (let i = 0; i < row.length; i++){
+                            // let location_image = row[i].loc_image.trim() !== "" && row[i].loc_image !== null ? " " : row[i].loc_image;
+                            let location_image = row[i].loc_image;
+                            let location_name = row[i].loc_name;
+                            let location_type = row[i].loc_type;
+                            let location_status = row[i].loc_status;
+                            let location_price = row[i].loc_price;
+                            let longhitude = row[i].loc_long;
+                            let latitude = row[i].loc_lat;
+                            let parsedLong = parseFloat(longhitude);
+                            let parsedLat = parseFloat(latitude);
+                            console.log("images/"+location_image);
+                            console.log(parsedLong);
+                            placeMarkerAndPanTo(parsedLat, parsedLong, location_name, location_type, location_price, location_status, location_image, map);
+                        }
                     },
                     error: function (error){
                         console.log(error);
                     }
-                    
                 });
-            });
         });
     </script>
 </head>
 
 <body>
     <div id="map"></div>
-        <input type="text" name="loc_name" id="loc_name" placeholder="Search location" />
-    <!-- just put a input type -->
-        <button name="submit" id="myBtn">Seach</button>
+        <!-- <input type="text" name="loc_name" id="loc_name" placeholder="Search location" />
+        <button name="submit" id="myBtn">Seach</button>          -->
 </body>
 
 </html>
