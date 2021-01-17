@@ -1,5 +1,5 @@
 <?php 
 
-$con = mysqli_connect("localhost", "root", "", "geoloc_db");
+$con = mysqli_connect("localhost", "root", "", "tms");
 
 ?>

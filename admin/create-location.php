@@ -20,25 +20,6 @@ $locimage=$_FILES["locationimage"]["name"];
 $sql="INSERT INTO `tbllocation` (`loc_id`, `loc_type`, `loc_name`, `loc_long`, `loc_lat`, `loc_price`, `loc_status`, `loc_image`) VALUES (NULL, '$loctype', '$locname', '$loclong', '$loclat', '$locprice', '$locstatus', '$locimage');";
 move_uploaded_file($_FILES["locationimage"]["tmp_name"],"locationimages/".$_FILES["locationimage"]["name"]);
 $query2 = mysqli_query($con, $sql);
-// $query = $dbh->prepare($sql);
-// $query->bindParam(':loctype',$loctype,PDO::PARAM_STR);
-// $query->bindParam(':locname',$locname,PDO::PARAM_STR);
-// $query->bindParam(':loclong',$loclong,PDO::PARAM_STR);
-// $query->bindParam(':loclat',$loclat,PDO::PARAM_STR);
-// $query->bindParam(':locprice',$locprice,PDO::PARAM_STR);
-// $query->bindParam(':locstatus',$locstatus,PDO::PARAM_STR);
-// $query->bindParam(':locimage',$locimage,PDO::PARAM_STR);
-// $query->execute();
-// $lastInsertId = $dbh->lastInsertId();
-// if($lastInsertId)
-// {
-// $msg="Package Created Successfully";
-// }
-// else 
-// {
-// $error="Something went wrong. Please try again";
-// }
-
 }
 
 ?>
@@ -102,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       function initMap() {
         const myLatlng = { lat: 13.00, lng: 122.00 };
         const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 6,
+          zoom: 14,
           center: myLatlng,
         });
         // Create the initial InfoWindow.
@@ -119,9 +100,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           infoWindow = new google.maps.InfoWindow({
             position: mapsMouseEvent.latLng,
           });
-          
-          document.getElementById('locationlongitude').value = mapsMouseEvent.latLng.lat();
-          document.getElementById('locationlatitude').value = mapsMouseEvent.latLng.lng();
+          document.getElementById('locationlatitude').value = mapsMouseEvent.latLng.lat();
+          document.getElementById('locationlongitude').value = mapsMouseEvent.latLng.lng();
           infoWindow.setContent(
             JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
           );
@@ -132,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//mapscript-->	
 
 	<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Update Package </li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Update Package</li>
             </ol>
 		<!--grid-->
  	<div class="grid-form">
