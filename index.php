@@ -49,6 +49,7 @@ include('includes/config.php');
 
 
 <?php 
+$con = mysqli_connect("localhost", "root","","tms");
 $fetchQuery = mysqli_query($con, "SELECT tbltourpackages.PackageLocation as Analysis_Location
 FROM `tblbooking`
 INNER JOIN tbltourpackages ON tbltourpackages.PackageId = tblbooking.PackageId
@@ -87,11 +88,6 @@ foreach($results as $result)
 <?php }} ?>
 
 
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
-
-<a href="https://www.pornhub.com/view_video.php?viewkey=ph5ff1e5ca93a6d">Click me!!!!!!</a>
 <div><a href="package-list.php" class="view">View More Packages</a></div>
 </div>
 			<div class="clearfix"></div>

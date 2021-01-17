@@ -1,9 +1,9 @@
 <?php 
 // DB credentials.
 define('DB_HOST','localhost');
-define('DB_USER','u627076978_tanalatravelus');
-define('DB_PASS','EK2$1zqt;Y1');
-define('DB_NAME','u627076978_tanalatraveldb');
+define('DB_USER','root');
+define('DB_PASS','');
+define('DB_NAME','tms');
 // Establish database connection.
 try
 {
@@ -13,4 +13,5 @@ catch (PDOException $e)
 {
 exit("Error: " . $e->getMessage());
 }
+$con = mysqli_connect("localhost", "root", "", "tms");
 ?>
