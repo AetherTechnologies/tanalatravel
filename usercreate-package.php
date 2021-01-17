@@ -30,7 +30,7 @@ include('includes/config.php');
         #map {
             
             height: 50%;
-            width: 100%;
+            width: 60%;
         }
         /* Optional: Makes the sample page fill the window. */
         html,
@@ -135,7 +135,11 @@ include('includes/config.php');
 												</div>
 											</div>
 											<div class="form-group">
-												<div id="map"></div>
+												<div class="container-fluid">
+													<div class="row">
+														<div id="map" style="margin: auto;"></div>
+													</div>
+												</div>
 											</div>
 											<div class="itinerary">
 												<div class="row">
@@ -205,14 +209,21 @@ include('includes/config.php');
                     lat: 12.8797,
                     lng: 121.7740
                 },
-                zoom: 14,
+                zoom: 8,
             });
             map.setOptions({ minZoom: 4, maxZoom: 20});
+			if(navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(function (position){
+					initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					map.setCenter(initialLocation);		
+				});
+			}
         }
+		
+		
         var prev_window = false;
         function placeMarkerAndPanTo(latitude, longhitude, location_name, location_type, location_price, location_status, location_image, map) {
             
-           // markers.push(
             var marker = new google.maps.Marker({
                 position: {
                     lat: latitude,
@@ -224,11 +235,10 @@ include('includes/config.php');
         const contentString =
         '<div class="container">' +
         '<div class="row"><div class="col-12">' +
-        '<img src="../admin/locationimages/'+ location_image +'" width="250px" height= "250px">' +
-        '<h3>'+ location_name +'</h3>' +
+        '<img src="admin/locationimages/'+ location_image +'" width="150px" height= "150px"/>' +
+        '<div><p>'+ location_name +'</p>' +
         '<p>Price:'+' '+ location_price + '</p>' +
-        '<p>Location:'+' '+ location_status + '</p>' +
-        '<p>Type:'+' '+ location_type + '</p>' +
+        '<p>Location:'+' '+ location_status + '</p>' + '</div>' +
         '</div></div></div>';
 
             var infowindow = new google.maps.InfoWindow({
@@ -247,7 +257,7 @@ include('includes/config.php');
 
         $(document).ready(function() {
             $.ajax({
-                    url: "http://localhost/tanalatravel/geoloc/result.php",
+                    url: "http://localhost:8080/tanalatravel/geoloc/result.php",
                     dataType: 'json',
                     type: 'GET',
                     success : function (e){
