@@ -12,6 +12,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/css/aether.tech.css">
     <link rel="stylesheet" href="../assets/css/tanala.custom.css">
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/sweetalert2.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     </head>
@@ -56,7 +57,7 @@
 
                     <form role="form" id="registerForm">
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="userFullname" placeholder="Full name">
+                        <input type="text" class="form-control" id="userFullname" name="userFullname" placeholder="Full name">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -64,7 +65,7 @@
                         </div>
                         </div>
                         <div class="input-group mb-3">
-                        <input type="email" name="userEmail" class="form-control" placeholder="Email">
+                        <input type="email" name="userEmail" id="userEmail" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -72,7 +73,7 @@
                         </div>
                         </div>
                         <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -80,7 +81,7 @@
                         </div>
                         </div>
                         <div class="input-group mb-3">
-                        <input type="password" name="confirmPassword" class="form-control" placeholder="Retype password">
+                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Retype password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -121,6 +122,8 @@
     <script src="../assets/js/aether.tech.js"></script>
     <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="../assets/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetalert2.js"></script>
     <script src="../assets/js/tanala.custom.register.js"></script>
     </body>
 </html>
