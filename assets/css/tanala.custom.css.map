@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAA;EACZ,OAAO,EAAE,IAAI;CAIhB;;AALD,AAEI,gBAFY,CAEZ,MAAM,EAFV,gBAAgB,CAEJ,IAAI,CAAA;EACR,MAAM,EAAE,MAAM;CACjB",
+    "sources": [
+        "tanala.custom.scss"
+    ],
+    "names": [],
+    "file": "tanala.custom.css"
+}
