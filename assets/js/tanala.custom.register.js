@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $.validator.setDefaults({
         submitHandler: function() {
-
             $.ajax({
                 url: '../api/requests.php',
                 type: 'POST',
@@ -21,8 +20,11 @@ $(document).ready(function() {
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes'
                     }).then(() => {
-                        window.location.replace("login.php")
-                    })
+                        window.location.replace("login.php");
+                    });
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    alert('Error -' + xhr + ' ' + textStatus + ' : ' + errorThrown);
                 }
             });
         }
@@ -34,12 +36,20 @@ $(document).ready(function() {
             },
             userEmail: {
                 required: true,
-                email: true
+                email: true,
+                remote: {
+                    url: "../api/jsonRequests.php",
+                    type: "POST",
+                    data: {
+                        email: function() {
+                            return $("#userEmail").val();
+                        }
+                    }
+                }
             },
             password: {
                 required: true,
-                minlength: 5,
-                equalTo: '#confirmPassword'
+                minlength: 5
             },
             confirmPassword: {
                 required: true,
@@ -53,7 +63,8 @@ $(document).ready(function() {
         messages: {
             userEmail: {
                 required: "Please enter a email address",
-                email: "Please enter a vaild email address"
+                email: "Please enter a vaild email address",
+                remote: "Email Already in Use"
             },
             userFullname: {
                 required: "Please enter your full name"
