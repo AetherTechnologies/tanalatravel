@@ -15,8 +15,18 @@
   <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/css/aether.tech.css">
+  <link rel="stylesheet" href="../../assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" >
+  <link rel="stylesheets" href="../../assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+  #map {
+    height: 100%;
+    width: 100%
+  }
+  
+</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -213,7 +223,14 @@
 <!-- overlayScrollbars -->
 <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="../../assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="../../assets/plugins/select2/js/select2.full.min.js"></script>
+
+<script src="../../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../assets/js/aether.tech.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap" defer></script>
+
+<script src="../../assets/js/aether.admin.js"></script>
 </body>
 </html>

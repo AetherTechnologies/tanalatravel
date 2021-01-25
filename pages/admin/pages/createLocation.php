@@ -22,8 +22,10 @@
                     <div class="card-header">
                         <h3 class="card-title">Create Package</h3>
                     </div>
-                    <form id="CreatePackage">
+                    <form id="CreateLocation">
                         <div class="card-body">
+                            <div class="row">
+                                
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Location Name</label>
@@ -38,7 +40,7 @@
                                     <input type="text" class="form-control" id="Latitude" placeholder="Latitude" required disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">Photo</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="exampleInputFile">
@@ -49,17 +51,45 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Package Price In USD</label>
+                                    <input type="text" class="form-control" id="price" placeholder="Price" required>
+                                </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                 </div>
                             </div>
+                            
                             <div class="col-md-8">
-                                <div id="map">
-                                
-                                </div>
+                                <div id="map"></div>
                             </div>
+                            </div>
+                            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Multiple</label>
+                  <select class="duallistbox" multiple="multiple">
+                    <option>Alabama</option>
+                    <option>Alaska</option>
+                    <option>California</option>
+                    <option>Delaware</option>
+                    <option>Tennessee</option>
+                    <option>Texas</option>
+                    <option>Washington</option>
+                  </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
                         </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+            the plugin.
+          </div>
+        </div>
                             <!-- /.card-body -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
