@@ -123,7 +123,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -131,7 +131,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="../widgets.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Tour Management
@@ -140,7 +140,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="index.php?add-package" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Package</p>
                 </a>
@@ -149,6 +149,12 @@
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Package</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index.php?add-location" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Location</p>
                 </a>
               </li>
             </ul>
@@ -163,9 +169,24 @@
   <!-- Content Wrapper. Contains page content -->
   
   <?php 
-  if(strcmp($uri, "/tanalatravel/pages/admin/#")){
-    include_once("pages/dashboard.php");
-  } 
+  switch($uri){
+    case '/tanalatravel/pages/admin/' :
+      require __DIR__ . '/pages/dashboard.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php' :
+      require __DIR__ . '/pages/dashboard.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php?add-package' :
+      require __DIR__ . '/pages/createPackage.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php?add-location' :
+      require __DIR__ . '/pages/createLocation.php';
+      break;
+    default:
+      http_response_code(404);
+      require __DIR__ . '/pages/information/404.php';
+      break;
+  }
   
   ?>
   <!-- /.content-wrapper -->
@@ -191,7 +212,7 @@
 <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<script src="../../assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"
+<script src="../../assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../assets/js/aether.tech.js"></script>
 </body>

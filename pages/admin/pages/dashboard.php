@@ -36,7 +36,7 @@
                         <i class="fas fa-arrow-circle-right"></i>
                     </a>
                     </div>
-								</div>
+				</div>
 								
                 <div class="col-lg-6 col-6">
                     <!-- small card -->
