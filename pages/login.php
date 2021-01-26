@@ -1,7 +1,9 @@
+<?php include("../api/controller/checkClientValidity.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -12,6 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/css/aether.tech.css">
     <link rel="stylesheet" href="../assets/css/tanala.custom.css">
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/sweetalert2.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     </head>
@@ -31,7 +34,7 @@
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                     <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="../" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                     <a href="login.php" class="nav-link">Sign-in</a>
@@ -54,9 +57,9 @@
                     <div class="card-body login-card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
 
-                    <form action="../../index3.html" method="post">
+                    <form id="loginForm">
                         <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" id="clientEmail" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -64,7 +67,7 @@
                         </div>
                         </div>
                         <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" id="clientPassword" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -108,7 +111,10 @@
     <!-- Bootstrap 4 -->
     <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/aether.tech.js"></script>
-    <script src="../assets/js/plugins/jquery-validation/addtional-methods.min.js"></script>
     <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../assets/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetalert2.js"></script>
+    <script src="../assets/js/tanala.custom.login.js"></script>
     </body>
 </html>
