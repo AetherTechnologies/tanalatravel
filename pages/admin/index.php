@@ -17,7 +17,10 @@
   <link rel="stylesheet" href="../../assets/css/aether.tech.css">
   <link rel="stylesheet" href="../../assets/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="../../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" >
-  <link rel="stylesheets" href="../../assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css" >
+  <link rel="stylesheet" href="../../assets/plugins/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/image-uploader/image-uploader.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
@@ -221,12 +224,16 @@
 <!-- Bootstrap 4 -->
 <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
+<script src="../../assets/plugins/image-uploader/image-uploader.js"></script>
 <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="../../assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="../../assets/plugins/select2/js/select2.full.min.js"></script>
-
+<script src="../../assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="../../assets/plugins/sweetalert2/sweetalert2.js"></script>
+<script src="../../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="../../assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <script src="../../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- AdminLTE App -->
+<script src="../../assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="../../assets/js/aether.tech.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap" defer></script>

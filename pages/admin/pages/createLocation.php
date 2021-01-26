@@ -1,4 +1,6 @@
-
+<?php
+    include('process/upload.php');
+?>
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -22,80 +24,65 @@
                     <div class="card-header">
                         <h3 class="card-title">Create Package</h3>
                     </div>
-                    <form id="CreateLocation">
+                    <form id="CreateLocation" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
-                                
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Location Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Longhitude</label>
-                                    <input type="text" class="form-control" id="Longhitude" placeholder="Longhitude" required disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Latitude</label>
-                                    <input type="text" class="form-control" id="Latitude" placeholder="Latitude" required disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Photo</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="">Upload</span>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="LocationAddress">Location Name</label>
+                                        <input type="text" name="locationAddress" class="form-control" id="LocationAddress" placeholder="Address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Longhitude">Longhitude</label>
+                                        <input type="text" class="form-control" name="longhitude" id="Longhitude" placeholder="Longhitude" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Latitude">Latitude</label>
+                                        <input type="text" class="form-control" name="latitude" id="Latitude" placeholder="Latitude" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="LocationPhoto">Photo</label>
+                                        <div class="input-group">
+                                            <div class="input-images" id="LocationPhoto" style="width: 100%">
+                                                
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="Price">Package Price In USD</label>
+                                        <input type="text" name="pricing" class="form-control" id="Price" placeholder="Price" required>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Package Price In USD</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Price" required>
+                                <div class="col-md-8">
+                                    <div id="map"></div>
                                 </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-8">
-                                <div id="map"></div>
-                            </div>
                             </div>
                             <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                  <label>Multiple</label>
-                  <select class="duallistbox" multiple="multiple">
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-            </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Inclusion</label>
+                                        <select class="select2" name="inclusion[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" autocomplete="off" required>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Location Description</label>
+                                    <textarea class="textarea" placeholder="Place some text here" name="description"
+                                            style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                                </div>
+                                </div>
+                            </div>
                         </div>
-          <!-- /.card-body -->
-          <div class="card-footer">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-          </div>
-        </div>
-                            <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
                 </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                <button class="btn btn-primary" type="submit" name="Add">Add Location</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
