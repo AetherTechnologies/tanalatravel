@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item active">Add Location</li>
                     </ol>
                 </div>
-            </div>
+            </div> 
         </div>
     </section>
     <div class="container-fluid">
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Create Package</h3>
+                        <h3 class="card-title">Add Location</h3>
                     </div>
                     <form id="CreateLocation" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
@@ -34,11 +34,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Longhitude">Longhitude</label>
-                                        <input type="text" class="form-control" name="longhitude" id="Longhitude" placeholder="Longhitude" disabled>
+                                        <input type="text" class="form-control" name="longhitude" id="Longhitude" placeholder="Longhitude" readonly="readonly">
                                     </div>
                                     <div class="form-group">
                                         <label for="Latitude">Latitude</label>
-                                        <input type="text" class="form-control" name="latitude" id="Latitude" placeholder="Latitude" disabled>
+                                        <input type="text" class="form-control" name="latitude" id="Latitude" placeholder="Latitude" readonly="readonly">
                                     </div>
                                     <div class="form-group">
                                         <label for="LocationPhoto">Photo</label>
@@ -61,7 +61,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Inclusion</label>
-                                        <select class="select2" name="inclusion[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" autocomplete="off" required>
+                                        <select class="select2" name="inclusion[]" multiple="multiple" data-placeholder="Select an Inclusion" style="width: 100%;" autocomplete="off" required>
                                         </select>
                                     </div>
                                 </div>

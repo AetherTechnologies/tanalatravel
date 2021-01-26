@@ -153,7 +153,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="index.php?add-package" class="nav-link">
+                <a href="index.php?page=add-package" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Package</p>
                 </a>
@@ -165,7 +165,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="index.php?add-location" class="nav-link">
+                <a href="index.php?page=add-location" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Location</p>
                 </a>
@@ -189,10 +189,10 @@
     case '/tanalatravel/pages/admin/index.php' :
       require __DIR__ . '/pages/dashboard.php';
       break;
-    case '/tanalatravel/pages/admin/index.php?add-package' :
+    case '/tanalatravel/pages/admin/index.php?page=add-package' :
       require __DIR__ . '/pages/createPackage.php';
       break;
-    case '/tanalatravel/pages/admin/index.php?add-location' :
+    case '/tanalatravel/pages/admin/index.php?page=add-location' :
       require __DIR__ . '/pages/createLocation.php';
       break;
     default:

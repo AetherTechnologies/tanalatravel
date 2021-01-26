@@ -1,4 +1,5 @@
 <?php
+include("../../api/Classes/config.php");
 if(isset($_POST['Add'])){
     $countFiles = count($_FILES['LocationImages']['name']);
 
@@ -12,7 +13,7 @@ if(isset($_POST['Add'])){
                 // File name
                     $filename = $_FILES['LocationImages']['name'][$index];
             
-                    // Get extension
+                    // Get extension 
                     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
             
                     // Valid image extension
@@ -41,7 +42,8 @@ if(isset($_POST['Add'])){
         $latitude = $_POST['latitude'];
         $pricing = $_POST['pricing'];
         $description = $_POST['description'];
-        
+        mysqli_query($con, "INSERT INTO `location_table` (`location_longhitude`, `location_latitude`, `location_name`, `location_price`, `location_inclusion`, `location_description`, `location_photo`) 
+                            VALUES ('$longhitude', '$latitude', '$lAddress', '$pricing', '$inclusion', '$description', '$str');");
     }
 }
 
