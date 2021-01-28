@@ -489,3 +489,7 @@ $(function(){
 });
     
 }
+// Use badge badge-danger
+if(uri == 'pck-mgmt'){
+    $('#packageList').DataTable();
+}

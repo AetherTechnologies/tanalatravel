@@ -162,7 +162,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="index.php?page=pck-mgmt" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Package</p>
                 </a>
@@ -208,6 +208,9 @@
       break;
     case '/tanalatravel/pages/admin/index.php?page=inc-mgmt' :
       require __DIR__ . '/pages/inclusionMgmt.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php?page=pck-mgmt' :
+      require __DIR__ . '/pages/managePackages.php';
       break;
     default:
       http_response_code(404);
