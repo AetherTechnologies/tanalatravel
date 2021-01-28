@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Package</h1>
+                    <h1>Create Package</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">Tour Package</li>
-                        <li class="breadcrumb-item active">Add Location</li>
+                        <li class="breadcrumb-item active">Create Package</li>
                     </ol>
                 </div>
             </div> 
@@ -22,23 +22,15 @@
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Location</h3>
+                        <h3 class="card-title">Create Package</h3>
                     </div>
-                    <form id="CreateLocation" method="POST" enctype="multipart/form-data">
+                    <form id="CreatePackage" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="LocationAddress">Location Name</label>
-                                        <input type="text" name="locationAddress" class="form-control" id="LocationAddress" placeholder="Address" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Longhitude">Longhitude</label>
-                                        <input type="text" class="form-control" name="longhitude" id="Longhitude" placeholder="Longhitude" readonly="readonly">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Latitude">Latitude</label>
-                                        <input type="text" class="form-control" name="latitude" id="Latitude" placeholder="Latitude" readonly="readonly">
+                                        <label for="PackageName">Package Name</label>
+                                        <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Address" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="LocationPhoto">Photo</label>
@@ -52,8 +44,22 @@
                                         <label for="Price">Package Price In USD</label>
                                         <input type="text" name="pricing" class="form-control" id="Price" placeholder="Price" required>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="Tours">Tours</label>
+                                        <table id="locationView" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Location</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php include("process/populateTable.php"); ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <div id="map"></div>
                                 </div>
                             </div>
@@ -61,7 +67,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Inclusion</label>
-                                        <select class="select2" name="inclusion[]" multiple="multiple" data-placeholder="Select an Inclusion" style="width: 100%;" autocomplete="off" required>
+                                        <select class="select2" id="Inclusion" name="inclusion[]" multiple="multiple" data-placeholder="Select an Inclusion" style="width: 100%;" autocomplete="off" required>
                                         </select>
                                     </div>
                                 </div>
@@ -71,7 +77,7 @@
                                 <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Location Description</label>
-                                    <textarea class="textarea" placeholder="Place some text here" name="description"
+                                    <textarea class="textarea" id="PackageDescription" placeholder="Place some text here" name="description"
                                             style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
                                 </div>
                                 </div>
@@ -80,7 +86,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                <button class="btn btn-primary" type="submit" name="Add">Add Location</button>
+                <button class="btn btn-primary" type="submit" id="a" name="Add">Add Location</button>
                 </div>
                 </form>
             </div>
