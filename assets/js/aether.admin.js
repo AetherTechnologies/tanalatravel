@@ -15,11 +15,20 @@ var getUrlParameter = function getUrlParameter(sParam) {
 var uri = getUrlParameter('page');
 $(document).ready(function() {
     if(uri == 'add-location'){
-        var data = ["Flight", "Hotel", "Breakfast"];
-        $('.select2').select2({
-            data: data,
-            minimumResultsForSearch: 5
+        $(function(){
+            $.ajax({
+                url: '../../pages/admin/process/checkInclusion.php?fetch',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('.select2').select2({
+                        data: data,
+                        minimumResultsForSearch: 5
+                    });
+                }
+            })
         });
+        
         $('.textarea').summernote({
             height: 500,
             toolbar: [
@@ -47,10 +56,18 @@ $(document).ready(function() {
         });
     }
     if(uri == 'add-package'){
-        var data = ["Flight", "Hotel", "Breakfast"];
-        $('.select2').select2({
-            data: data,
-            minimumResultsForSearch: 5
+        $(function(){
+            $.ajax({
+                url: '../../pages/admin/process/checkInclusion.php?fetch',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('.select2').select2({
+                        data: data,
+                        minimumResultsForSearch: 5
+                    });
+                }
+            })
         });
         $('.textarea').summernote({
             height: 400,
@@ -320,5 +337,155 @@ if(uri == 'add-package'){
         });
         
     });
+    
+}
+if(uri == 'inc-mgmt'){
+    $('#inclusionTB').DataTable();
+
+    $('#AddNewInclusion').submit(function(e){
+        e.preventDefault();
+        let inclusion = $('#InclusionName').val();
+        $.ajax({
+            url: "../../pages/admin/process/checkInclusion.php",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                DataInclusion: inclusion
+            },
+            success : function(data){
+                var $JSON = JSON.parse(JSON.stringify(data));
+                if($JSON[0]){
+                    Swal.fire(inclusion +' is already existed.')
+                }
+                else{
+                    Swal.fire(inclusion + ' is Added!')
+                    .then(()=>{
+                        window.location.reload(1);
+                    });
+                }
+            },
+            error : function(xhs, status, code){
+                console.log(xhs + " " + status + " " + code);
+            }
+        });
+    });
+$(function(){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000
+    });
+    $('.buttonControl').click(function(){
+        var $current = $(this);
+        console.log($current.attr('data-inclusion'));
+        if($current.hasClass('btn-success')){
+            $current.removeClass("btn-success").addClass("btn-danger");
+            $current.html("Disable");
+            $.ajax({
+                url: "../../pages/admin/process/checkInclusion.php",
+                type: 'POST',
+                data: {
+                    InclusionID : $current.attr("data-inclusion"),
+                },
+                success : function(){
+                    Toast.fire({
+                        title: 'Successfully Disabled ' + $current.attr("data-name"),
+                        type: 'success'
+                    })
+                }
+            })
+        }
+        else if($current.hasClass('btn-danger')){
+            $current.removeClass("btn-danger").addClass("btn-success");
+            $current.html("Enable");
+            $.ajax({
+                url: "../../pages/admin/process/checkInclusion.php",
+                type: 'POST',
+                data: {
+                    InclusionID : $current.attr("data-inclusion"),
+                },
+                success : function(){
+                    Toast.fire({
+                        title: 'Successfully Enabled ' + $current.attr("data-name"),
+                        type: 'success'
+                    })
+                }
+            })
+        }
+    });
+    $('.buttonEdit').click(function(){
+        let $ID = $(this).attr('data-inclusion');
+        let span = $('#span' + $ID);
+        let input = document.getElementById('input'+$ID);
+        let data = $(this).attr('data-name');
+        var updated = input.value;
+        if(span.hasClass('d-none')){
+            span.removeClass('d-none');
+            input.type = 'hidden';
+            span.html(updated);
+        }
+        else{
+            span.addClass('d-none');
+            input.type = 'text';
+            input.value = data;
+        }
+
+        if($(this).hasClass('btn-info')){
+            $(this).removeClass('btn-info').addClass('btn-success');
+            $(this).html('Done');
+        }else if( $(this).hasClass('btn-success')){
+            $(this).removeClass('btn-success').addClass('btn-info');
+            $(this).html('Edit');
+            $.ajax({
+                url: '../../pages/admin/process/checkInclusion.php',
+                type: 'POST',
+                data: {
+                    id: $ID,
+                    update : updated,
+                },
+                success : function(){
+                    Toast.fire({
+                        title: "Successfully Updated",
+                        type: 'info'
+                    })
+                }
+            })
+        }
+    });
+    $('.deleteButton').click(function(){
+        let ID = $(this).attr('data-id');
+        console.log(ID);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '../../pages/admin/process/checkInclusion.php',
+                    type: 'POST',
+                    data: {
+                        delete: ID,
+                    },
+                    success : function (){
+                        Swal.fire(
+                            'Deleted!',
+                            'Successfully deleted.',
+                            'success'
+                          ).then(()=> {
+                              window.location.reload(1);
+                          });
+                    }
+                });
+              
+            }
+          })
+    });
+});
     
 }

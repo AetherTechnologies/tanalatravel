@@ -7,7 +7,7 @@
         $sQ = mysqli_fetch_array($selectQuery);
         $uV = $sQ[0];
         if($uV == 0){
-            header("location: ../");
+            header("location: member/");
         }
         elseif($uV == 1){
             header("location: admin/");

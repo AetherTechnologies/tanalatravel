@@ -176,7 +176,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="index.php?page=inc-mgmt" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Inclusion Management
@@ -205,6 +205,9 @@
       break;
     case '/tanalatravel/pages/admin/index.php?page=add-location' :
       require __DIR__ . '/pages/createLocation.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php?page=inc-mgmt' :
+      require __DIR__ . '/pages/inclusionMgmt.php';
       break;
     default:
       http_response_code(404);
@@ -249,7 +252,6 @@
 <script src="../../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="../../assets/js/aether.tech.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap" defer></script>
 
 <script src="../../assets/js/aether.admin.js"></script>
 </body>
