@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css" >
   <link rel="stylesheet" href="../../assets/plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="../../assets/plugins/image-uploader/image-uploader.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
@@ -28,7 +29,9 @@
     height: 100%;
     width: 100%
   }
-  
+  .pull-left{
+    float: left !important;
+  }
 </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -159,7 +162,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="index.php?page=pck-mgmt" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Package</p>
                 </a>
@@ -171,6 +174,14 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="index.php?page=inc-mgmt" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Inclusion Management
+              </p>
+            </a>
           </li>
         </ul>
       </nav>
@@ -194,6 +205,12 @@
       break;
     case '/tanalatravel/pages/admin/index.php?page=add-location' :
       require __DIR__ . '/pages/createLocation.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php?page=inc-mgmt' :
+      require __DIR__ . '/pages/inclusionMgmt.php';
+      break;
+    case '/tanalatravel/pages/admin/index.php?page=pck-mgmt' :
+      require __DIR__ . '/pages/managePackages.php';
       break;
     default:
       http_response_code(404);
@@ -234,9 +251,10 @@
 <script src="../../assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <script src="../../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <script src="../../assets/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="../../assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="../../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="../../assets/js/aether.tech.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap" defer></script>
 
 <script src="../../assets/js/aether.admin.js"></script>
 </body>

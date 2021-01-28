@@ -74,7 +74,7 @@
             // Create the input type file and append it to the container
             $input = $('<input>', {
                 type: 'file',
-                id: plugin.settings.imagesInputName + '-' + random(),
+                id: 'uploadCustom',
                 name: 'LocationImages[]',
                 accept: plugin.settings.extensions.join(','),
                 multiple: ''
