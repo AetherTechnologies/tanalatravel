@@ -17,12 +17,12 @@
         echo json_encode($fetch);
     }
     if(isset($_POST['tacPost'])){
-        $change = $_POST['tacPost'];
+        $change = mysqli_real_escape_string($con, $_POST['tacPost']);
         $a = mysqli_query($con, "UPDATE cms_table SET cms_content = '$change', cms_update_date = current_timestamp() WHERE cms_for = 'termsAndCondition'");
 
     }
     if(isset($_POST['auPost'])){
-        $change = $_POST['auPost'];
+        $change = mysqli_real_escape_string($con, $_POST['auPost']);
         $a = mysqli_query($con, "UPDATE cms_table SET cms_content = '$change', cms_update_date = current_timestamp() WHERE cms_for = 'AboutUs'");
     }
 ?>

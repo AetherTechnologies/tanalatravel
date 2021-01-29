@@ -93,7 +93,7 @@
                                     <div class="input-group mb-0">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                                            <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms</a>.</label>
+                                            <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#" data-toggle="modal" data-target="#Terms">terms</a>.</label>
                                         </div>
                                     </div>
                                 </div>
@@ -109,6 +109,7 @@
                     <!-- /.form-box -->
                 </div><!-- /.card -->
             </div>
+            <?php include('admin/pages/information/termAndCondition.php'); ?>
         </section>
         
         
