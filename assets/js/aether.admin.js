@@ -455,7 +455,6 @@ $(function(){
     });
     $('.deleteButton').click(function(){
         let ID = $(this).attr('data-id');
-        console.log(ID);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -484,7 +483,7 @@ $(function(){
                 });
               
             }
-          })
+          });
     });
 });
     
@@ -492,4 +491,166 @@ $(function(){
 // Use badge badge-danger
 if(uri == 'pck-mgmt'){
     $('#packageList').DataTable();
+    $('.btnEdit').click(function(){
+        var inputs = '<div class="form-group">'+
+        '<label for="PackageName">Package Name</label>'+
+        '<input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Address" required>'+
+        '</div>';
+        (async () => {
+            
+            const { value: formValues } = await Swal.fire({
+                title: 'Multiple inputs',
+                html: inputs,
+                focusConfirm: false,
+                preConfirm: () => {
+                  return [
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value
+                  ]
+                }
+              })
+              
+              if (formValues) {
+                Swal.fire(JSON.stringify(formValues))
+              }
+            })()
+    });
+    $('.btnDelete').click(function(){
+        let $thisButton = $(this);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '../../pages/admin/process/apiRemovePackage.php',
+                    type: 'POST',
+                    data: {
+                        DeletePackage: $thisButton.attr('data-id'),
+                    },
+                    success : function (){
+                        Swal.fire(
+                            'Deleted!',
+                            'Successfully deleted.',
+                            'success'
+                          ).then(()=> {
+                              window.location.reload(1);
+                          });
+                    }
+                });
+              
+            }
+          });
+    });
+}
+if(uri == 'ctn-mgmt'){
+    $(function(){
+        var typingTime;
+        var doneTypingInterval = 2000;
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+        });
+        $.ajax({
+            url: '../../pages/admin/process/editContentMgmt.php?tac',
+            dataType: 'JSON',
+            success : function(y){
+                let x = JSON.parse(JSON.stringify(y));
+                $('#termAndConditionEdit').summernote('destroy');
+                $('#termAndConditionEdit').html(x[0]);
+                $('#termAndConditionEdit').summernote({
+                    height: 400,
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']]
+                    ],
+                    focus: false,
+                    disableResizeEditor: true,
+                    followingToolbar: false,
+                    callbacks: {
+                        onKeyup : function(){
+                            clearTimeout(typingTime);
+                            typingTime = setTimeout(saveChangesTAC,doneTypingInterval);
+                        }
+                    }
+                });
+            },
+            error : function(xhs, status, code){
+                console.log(xhs + " " + status + " " + code);
+            }
+        });
+        $.ajax({
+            url: '../../pages/admin/process/editContentMgmt.php?au',
+            dataType: 'JSON',
+            success : function(y){
+                $('#aboutUsEdit').summernote('destroy');
+                let x = JSON.parse(JSON.stringify(y));
+                $('#aboutUsEdit').html(x[0]);
+                $('#aboutUsEdit').summernote({
+                    height: 400,
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']]
+                    ],
+                    focus: false,
+                    disableResizeEditor: true,
+                    followingToolbar: false,
+                    callbacks: {
+                        onKeyup : function(){
+                            clearTimeout(typingTime);
+                            typingTime = setTimeout(saveChagesAU,doneTypingInterval);
+                        }
+                    }
+                });
+            }
+        });
+        function saveChagesAU(){
+            let x = $('#aboutUsEdit').val();
+            $.ajax({
+                url: '../../pages/admin/process/editContentMgmt.php',
+                type: 'POST',
+                data: {
+                    auPost: x
+                },
+                success : function(){
+                    Toast.fire({
+                        title: 'Saved Changes',
+                        type: 'success'
+                    })
+                }
+            });
+        }
+        function saveChangesTAC(){
+            let x = $('#termAndConditionEdit').val();
+            $.ajax({
+                url: '../../pages/admin/process/editContentMgmt.php',
+                type: 'POST',
+                data : {
+                    tacPost : x
+                },
+                success : function(){
+                    Toast.fire({
+                        title: 'Saved Changes',
+                        type: 'success'
+                    });
+                }
+            });
+            
+        }
+    });
 }

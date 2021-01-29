@@ -52,58 +52,11 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="fas fa-th-large"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
+          <span class="badge badge-danger navbar-badge"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../uploads/defaults/logo_dark.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          <a href="index.php?page=logout" class="dropdown-item dropdown-footer">Logout</a>
         </div>
       </li>
     </ul>
@@ -129,7 +82,7 @@
           <img src="../../uploads/defaults/profile_defaults.svg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Sample Admin</a>
+          <a href="#" class="d-block"><?= $UNAME; ?></a>
         </div>
       </div>
 
@@ -183,6 +136,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="index.php?page=ctn-mgmt" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Content Management
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -194,23 +155,26 @@
   
   <?php 
   switch($uri){
-    case '/tanalatravel/pages/admin/' :
+    case '/pages/admin/' :
       require __DIR__ . '/pages/dashboard.php';
       break;
-    case '/tanalatravel/pages/admin/index.php' :
+    case '/pages/admin/index.php' :
       require __DIR__ . '/pages/dashboard.php';
       break;
-    case '/tanalatravel/pages/admin/index.php?page=add-package' :
+    case '/pages/admin/index.php?page=add-package' :
       require __DIR__ . '/pages/createPackage.php';
       break;
-    case '/tanalatravel/pages/admin/index.php?page=add-location' :
+    case '/pages/admin/index.php?page=add-location' :
       require __DIR__ . '/pages/createLocation.php';
       break;
-    case '/tanalatravel/pages/admin/index.php?page=inc-mgmt' :
+    case '/pages/admin/index.php?page=inc-mgmt' :
       require __DIR__ . '/pages/inclusionMgmt.php';
       break;
-    case '/tanalatravel/pages/admin/index.php?page=pck-mgmt' :
+    case '/pages/admin/index.php?page=pck-mgmt' :
       require __DIR__ . '/pages/managePackages.php';
+      break;
+    case '/pages/admin/index.php?page=ctn-mgmt' :
+      require __DIR__ . '/pages/contentMgmt.php';
       break;
     default:
       http_response_code(404);
