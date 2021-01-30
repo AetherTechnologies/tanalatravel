@@ -654,3 +654,48 @@ if(uri == 'ctn-mgmt'){
         }
     });
 }
+if(uri == 'rqst-mgmt'){
+    $('#requestsTB').DataTable();
+    $('.preview').click(function(){
+        // $('#modal-xl').modal('toggle');
+        // $('#sample').html($(this).attr('data-preview'));
+        let $ID = $(this).attr('data-preview');
+        $.ajax({
+            url : '../../pages/admin/process/previewRequest.php',
+            type : 'POST',
+            dataType: 'JSON',
+            data : {
+                RequestID : $ID,
+            },
+            success: function(x){
+                let y = JSON.parse(JSON.stringify(x));
+                console.log(y);
+                showPreview(y.package_name, y.package_description,y.Inclusion);
+            },
+            error: function(xhs, status, code){
+                alert(xhs + " " + status + " " + code);
+            }
+        });
+    });
+    $('.sam').click(function(){
+    });
+    $('#inclusionEdit').select2();
+    function showPreview(packageName, description, inclusion){
+        
+        $('#preview').modal('toggle');
+        $('#PackageName').val(packageName);
+        $('#PackageDescription').summernote('destroy');
+        $('#PackageDescription').html(description);
+        $('#PackageDescription').summernote({
+            height: 180,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+                ],
+        });
+    }
+}

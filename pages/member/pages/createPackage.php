@@ -1,6 +1,4 @@
-<?php
-    include('process/upload.php');
-?>
+
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -41,10 +39,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Price">Package Price In USD</label>
-                                        <input type="text" name="pricing" class="form-control" id="Price" placeholder="Price" required>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="Tours">Tours</label>
                                         <table id="locationView" class="table table-bordered table-hover">
                                             <thead>
@@ -54,7 +48,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php include("process/populateTable.php"); ?>
+                                                <?php include("../../pages/admin/process/populateTable.php"); ?>
                                             </tbody>
                                         </table>
                                     </div>

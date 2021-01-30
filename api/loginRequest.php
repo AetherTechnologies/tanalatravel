@@ -6,7 +6,7 @@ header("Access-Control-Allow-Methods: POST");
 header('Content-type: application/json');
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 session_start();
-include("Classes/config.php");
+include("Classes/config.php"); 
 
     if(isset($_POST['request'])){
         if(!empty($_POST['userEmail']) && !empty($_POST['userPassword'])){

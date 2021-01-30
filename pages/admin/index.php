@@ -144,6 +144,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="index.php?page=rqst-mgmt" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Requested package
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -175,6 +183,9 @@
       break;
     case '/pages/admin/index.php?page=ctn-mgmt' :
       require __DIR__ . '/pages/contentMgmt.php';
+      break;
+    case '/pages/admin/index.php?page=rqst-mgmt';
+      require __DIR__ . '/pages/requestMgmt.php';
       break;
     default:
       http_response_code(404);
