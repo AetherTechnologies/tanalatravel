@@ -24,68 +24,89 @@
                     </div>
                     <form id="CreatePackage" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label for="PackageName">Package Name</label>
-                                        <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Address" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="LocationPhoto">Photo</label>
-                                        <div class="input-group">
-                                            <div class="input-images" id="LocationPhoto" style="width: 100%">
-                                                
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="PackageName">Package Name</label>
+                                            <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Package Name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date and time range:</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                                </div>
+                                                <input type="text" name="date" class="form-control float-right" id="reservationtime">
                                             </div>
+                                            <!-- /.input group -->
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div id="map" style="height: 450px"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div class="form-group">
+                                            <label for="Tours">Tours</label>
+                                            <table id="locationView" class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Location</th>
+                                                        <th>Action</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php include("process.member/populateTableUser.php"); ?>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="Tours">Tours</label>
-                                        <table id="locationView" class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Location</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php include("../../pages/admin/process/populateTable.php"); ?>
-                                            </tbody>
-                                        </table>
+                                    <!-- /.col -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" id="PopulateAdd">
+
                                     </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div id="map"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Inclusion</label>
-                                        <select class="select2" id="Inclusion" name="inclusion[]" multiple="multiple" data-placeholder="Select an Inclusion" style="width: 100%;" autocomplete="off" required>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Location Description</label>
-                                    <textarea class="textarea" id="PackageDescription" placeholder="Place some text here" name="description"
-                                            style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
-                                </div>
                                 </div>
                             </div>
                         </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                <button class="btn btn-primary" type="submit" id="a" name="Add">Add Package</button>
+                <button class="btn btn-primary" type="submit" id="a" name="Add">Request Package</button>
                 </div>
                 </form>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="ReservePackage">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Reserve Package</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="config">
+                <div id="configSet">
+                
+                </div>
+                <button class="btn btn-success btn-sm" type="submit">Confirm</button>
+              </form>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbSmW0o0udL-0Kkllfh2ntL72mIi6loC8&callback=initMap" defer></script>

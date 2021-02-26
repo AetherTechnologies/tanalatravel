@@ -3,7 +3,7 @@ include("../../api/Classes/config.php");
 if(isset($_POST['Add'])){
     $countFiles = count($_FILES['LocationImages']['name']);
 
-    $uploadLocation = "..\\..\\uploads\\locationPhoto\\";
+    $uploadLocation = "../../uploads/locationPhoto/";
 
     $filesArr = array();
     $str = "";
@@ -11,7 +11,7 @@ if(isset($_POST['Add'])){
         for($index = 0; $index < $countFiles; $index++){
             if(isset($_FILES['LocationImages']['name'][$index]) && $_FILES['LocationImages']['name'][$index] != ''){
                 // File name
-                    $filename = $_FILES['LocationImages']['name'][$index];
+                    $filename = date("YmdHis") . "-" .$_FILES['LocationImages']['name'][$index];
             
                     // Get extension 
                     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -41,7 +41,7 @@ if(isset($_POST['Add'])){
         $longhitude = $_POST['longhitude'];
         $latitude = $_POST['latitude'];
         $pricing = $_POST['pricing'];
-        $description = $_POST['description'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         mysqli_query($con, "INSERT INTO `location_table` (`location_longhitude`, `location_latitude`, `location_name`, `location_price`, `location_inclusion`, `location_description`, `location_photo`) 
                             VALUES ('$longhitude', '$latitude', '$lAddress', '$pricing', '$inclusion', '$description', '$str');");
     }

@@ -30,17 +30,19 @@
       </button>
 
       <!-- Right navbar links -->
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <li class="nav-item">
-          <a href="index.php" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="pages/login.php" class="nav-link">Sign-in</a>
-        </li>
-        <li class="nav-item">
-          <a href="pages/register.php" class="nav-link">Sign-up</a>
-        </li>
-      </ul>
+      <div class="navbar-collapse order-3 collapse" id="navbarCollapse">
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+          <li class="nav-item">
+            <a href="index.php" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/login.php" class="nav-link">Sign-in</a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/register.php" class="nav-link">Sign-up</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   <!-- /.navbar -->

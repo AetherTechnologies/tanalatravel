@@ -16,7 +16,7 @@ if(isset($_FILES['files'])){
     $countfiles = count($_FILES['files']['name']);
     if($countfiles > 0){
         // Upload directory
-        $upload_location = "..\\..\\..\\uploads\\package\\";
+        $upload_location = "../../../uploads/package/";
     
     
         // Loop all files
@@ -24,7 +24,7 @@ if(isset($_FILES['files'])){
     
             if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
                 // File name
-                $filename = $_FILES['files']['name'][$index];
+                $filename = date("YmdHis") . "-" .$_FILES['files']['name'][$index];
     
                 // Get extension
                 $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -64,7 +64,7 @@ if(isset($_POST['description'])){
     $description = $_POST['description'];
 }
 
-$insert = mysqli_query($con, "INSERT INTO package_table (`package_name`, `package_price`, `package_inclusion`, `package_tours`, `package_description`, `package_photo`) 
-                                                VALUES ('$packageName', '$price', '$inclusion', '$location', '$description', '$files_arr')");
+$insert = mysqli_query($con, "INSERT INTO package_table (`package_name`, `package_price`, `package_inclusion`, `package_tours`, `package_description`, `package_photo`, `package_status`) 
+                                                VALUES ('$packageName', '$price', '$inclusion', '$location', '$description', '$files_arr', '3')");
 
 ?>

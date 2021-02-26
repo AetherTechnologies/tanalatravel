@@ -36,8 +36,7 @@
                             <i class="fas fa-user-plus"></i>
                         </div>
                         <a href="#" class="small-box-footer">
-                        More info 
-                        <i class="fas fa-arrow-circle-right"></i>
+                        Good Work 
                     </a>
                     </div>
 				</div>
@@ -63,7 +62,7 @@
                     <!-- small card -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?= mysqli_num_rows(mysqli_query($con, "SELECT * FROM book_table WHERE book_status = 1")) ?></h3>
                             <p>Bookings</p>
                         </div>
                         <div class="icon">
@@ -79,13 +78,13 @@
                     <!-- small card -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>44</h3>
-                            <p>Enquiries</p>
+                            <h3><?= mysqli_num_rows(mysqli_query($con, "SELECT * FROM message_table WHERE category = 1 AND status = 1")) ?></h3>
+                            <p>Inquiries</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-user-plus"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="index.php?page=view-inq" class="small-box-footer">
                         More info 
                         <i class="fas fa-arrow-circle-right"></i>
                     </a>
@@ -95,13 +94,13 @@
                     <!-- small card -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?= mysqli_num_rows(mysqli_query($con, "SELECT * FROM package_table")) ?></h3>
                             <p>Total Packages</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-user-plus"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="index.php?page=pck-mgmt" class="small-box-footer">
                         More info 
                         <i class="fas fa-arrow-circle-right"></i>
                     </a>
@@ -111,13 +110,13 @@
                     <!-- small card -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?= mysqli_num_rows(mysqli_query($con, "SELECT * FROM message_table WHERE category = 2 AND status = 1")) ?></h3>
                             <p>Issue Raised</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-user-plus"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="index.php?page=view-iss" class="small-box-footer">
                         More info 
                         <i class="fas fa-arrow-circle-right"></i>
                     </a>

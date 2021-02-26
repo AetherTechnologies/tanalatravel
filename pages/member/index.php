@@ -22,6 +22,9 @@
   <link rel="stylesheet" href="../../assets/plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="../../assets/plugins/image-uploader/image-uploader.min.css">
   <link rel="stylesheet" href="../../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  
+  <link rel="stylesheet" href="../../assets/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
@@ -109,15 +112,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="index.php?page=add-package" class="nav-link">
+                <a href="index.php?page=tourHistory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tour History</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="index.php?page=pck-mgmt" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -137,10 +134,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="index.php?page=ctn-mgmt" class="nav-link">
+            <a href="index.php?page=snd-inquiry" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Edit Own Tours
+                Send Inquiry
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.php?page=snd-issue" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Send Issue
               </p>
             </a>
           </li>
@@ -164,6 +169,21 @@
       case '/pages/member/index.php?page=create-tour':
         require __DIR__ . '/pages/createPackage.php';
         break; 
+      case '/pages/member/index.php?page=view':
+        require __DIR__ . '/pages/view.php';
+        break;
+      case '/pages/member/index.php?page=snd-inquiry':
+        require __DIR__ . '/pages/sendInquiry.php';
+        break;
+      case '/pages/member/index.php?page=snd-issue':
+        require __DIR__ . '/pages/sendIssue.php';
+        break;
+      case '/pages/member/index.php?page=tourHistory':
+        require __DIR__ . '/pages/tourHistory.php';
+        break;
+      case '/pages/member/index.php?page=pending':
+        require __DIR__ . '/pages/pending.php';
+        break;
       default:
         http_response_code(404);
         require __DIR__ . '/pages/information/404.php';
@@ -206,6 +226,11 @@
 <script src="../../assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="../../assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../assets/js/aether.reccurring.js"></script>
+<script src="../../assets/plugins/moment/moment.min.js"></script>
+<script src="../../assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../../assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <script src="../../assets/js/aether.tech.js"></script>
 <script src="../../assets/js/tanala.custom.member.js"></script>
 </body>

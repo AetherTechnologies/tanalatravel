@@ -32,10 +32,12 @@
               <table id="requestsTB" class="table table-hover">
                     <thead>
                         <tr>
+                            <th>Package Name</th>
                             <th>Requested By</th>
                             <th>Request Date</th>
                             <th>Status</th>
                             <th>Action</th>
+                            <th>Type</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,50 +54,51 @@
       <div class="modal fade" id="preview">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">This Is For Package Name</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="preview-edit">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="PackageName">Package Name</label>
-                            <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Address" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="PackagePrice">Package Price</label>
-                            <input type="text" name="PackagePrice" class="form-control" id="PackagePrice" placeholder="Address" required>
-                        </div>
-                    </div>
+          
+            <form id="preview-edit" method="POST">
+              <div class="modal-header">
+                <h4 class="modal-title">This Is For Package Name</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="PackageName">Package Name</label>
+                              <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Address" required>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label for="PackagePrice">Package Price</label>
+                              <input type="text" name="PackagePrice" class="form-control" id="PackagePrice" placeholder="Price" required>
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label>Inclusion</label>
+                              <select class="select2" id="inclusionEdit" name="inclusion[]" multiple="multiple" data-placeholder="Select an Inclusion" style="width: 100%;" autocomplete="off" required>
+                              </select>
+                          </div>
+                      </div>
+                  </div> 
+                  <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Inclusion</label>
-                            <select class="select2" id="inclusionEdit" name="inclusion[]" multiple="multiple" data-placeholder="Select an Inclusion" style="width: 100%;" autocomplete="off" required>
-                            </select>
-                        </div>
+                      <div class="form-group">
+                        <label>Location Description</label>
+                        <textarea class="textarea" id="PackageDescription" placeholder="Place some text here" name="description"
+                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                      </div>
                     </div>
-                </div> 
-                <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Location Description</label>
-                                    <textarea class="textarea" id="PackageDescription" placeholder="Place some text here" name="description"
-                                            style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
-                                </div>
-                                </div>
-                            </div>                   
-              </form>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                  </div>   
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="submit" id="save">Save changes</button>
+              </div>                
+            </form>
           </div>
           <!-- /.modal-content -->
         </div>

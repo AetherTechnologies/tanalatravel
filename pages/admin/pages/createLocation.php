@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Package</h1>
+                    <h1>Add Location</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">Tour Package</li>
-                        <li class="breadcrumb-item active">Add Location</li>
+                        <li class="breadcrumb-item">Add Location</li>
+                        <li class="breadcrumb-item active">Tour Package</li>
                     </ol>
                 </div>
             </div> 
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <div id="map"></div>
+                                    <div id="map" style="height: 450px"></div>
                                 </div>
                             </div>
                             <div class="row">

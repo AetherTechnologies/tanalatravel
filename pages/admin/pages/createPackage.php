@@ -30,7 +30,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="PackageName">Package Name</label>
-                                        <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Address" required>
+                                        <input type="text" name="PackageName" class="form-control" id="PackageName" placeholder="Package Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="LocationPhoto">Photo</label>
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-7">
-                                    <div id="map"></div>
+                                    <div id="map" style="height: 450px"></div>
                                 </div>
                             </div>
                             <div class="row">

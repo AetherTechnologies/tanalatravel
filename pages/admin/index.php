@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="../../assets/plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="../../assets/plugins/image-uploader/image-uploader.min.css">
   <link rel="stylesheet" href="../../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <?php if($uri == '/pages/admin/index.php?page=pck-mgmt'): ?>
+    <link rel="stylesheet" href="../../assets/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <?php endif; ?>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
@@ -32,9 +36,186 @@
   .pull-left{
     float: left !important;
   }
+
+.boxes {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    top: 50%;
+    right: 50%;
+    z-index: 9999;
+    margin-top: 32px;
+    -webkit-transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+    transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+.boxes .box {
+    width: 32px;
+    height: 32px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+
+
+.boxes .box:nth-child(1) {
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+    -webkit-animation: box1 1s linear infinite;
+    animation: box1 1s linear infinite;
+}
+.boxes .box:nth-child(2) {
+    -webkit-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+    -webkit-animation: box2 1s linear infinite;
+    animation: box2 1s linear infinite;
+}
+.boxes .box:nth-child(3) {
+    -webkit-transform: translate(100%, 100%);
+    transform: translate(100%, 100%);
+    -webkit-animation: box3 1s linear infinite;
+    animation: box3 1s linear infinite;
+}
+.boxes .box:nth-child(4) {
+    -webkit-transform: translate(200%, 0);
+    transform: translate(200%, 0);
+    -webkit-animation: box4 1s linear infinite;
+    animation: box4 1s linear infinite;
+}
+
+.loading{
+  background-color: rgba(0,0,0,0.6);
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+}
+
+.boxes .box > div {
+    background: #5C8DF6;
+    --translateZ: 15.5px;
+    --rotateY: 0deg;
+    --rotateX: 0deg;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #5C8DF6;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    -webkit-transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+    transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+    top: 0;
+    left: 0;
+    background: #5C8DF6;
+}
+.boxes .box > div:nth-child(2) {
+    background: #145af2;
+    right: 0;
+    --rotateY: 90deg;
+}
+.boxes .box > div:nth-child(3) {
+    background: #447cf5;
+    --rotateX: -90deg;
+}
+.boxes .box > div:nth-child(4) {
+    background: #DBE3F4;
+    top: 0;
+    left: 0;
+    --translateZ: -90px;
+}
+
+
+
+
+
+@keyframes box1 {
+    0%,
+    50% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(200%, 0);
+    }
+}
+
+@keyframes box2 {
+    0%{
+        transform: translate(0, 100%);
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(100%, 0);
+    }
+}
+
+@keyframes box3 {
+    0%,
+    50% {
+        transform: translate(100%, 100%);
+    }
+    100% {
+        transform: translate(0, 100%);
+    }
+}
+
+@keyframes box4 {
+    0%{
+        transform: translate(200%, 0);
+    }
+    50% {
+        transform: translate(200%, 100%);
+    }
+    100% {
+        transform: translate(100%, 100%);
+    }
+}
 </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+<div class="loading d-none" id="load">
+  <div class="boxes">
+      <div class="box">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+      <div class="box">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+      <div class="box">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+      <div class="box">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+  </div>
+</div>
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -126,6 +307,12 @@
                   <p>Add Location</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="index.php?page=edit-location" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Edit Location</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -149,6 +336,22 @@
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Requested package
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.php?page=view-inq" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Inquiries
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="index.php?page=view-iss" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Issues
               </p>
             </a>
           </li>
@@ -187,6 +390,16 @@
     case '/pages/admin/index.php?page=rqst-mgmt';
       require __DIR__ . '/pages/requestMgmt.php';
       break;
+    case '/pages/admin/index.php?page=view-inq':
+      require __DIR__ . '/pages/viewInquiry.php';
+      break;
+    case '/pages/admin/index.php?page=view-iss':
+      require __DIR__ . '/pages/viewIssue.php';
+      break;
+    case '/pages/admin/index.php?page=edit-location':
+      require __DIR__ . '/pages/editLocation.php';
+      break;
+    
     default:
       http_response_code(404);
       require __DIR__ . '/pages/information/404.php';
@@ -228,6 +441,13 @@
 <script src="../../assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="../../assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<?php if($uri == "/pages/admin/index.php?page=pck-mgmt"): ?>
+  <script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="../../assets/js/aether.reccurring.js"></script>
+  <script src="../../assets/plugins/moment/moment.min.js"></script>
+  <script src="../../assets/plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="../../assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<?php endif; ?>
 <script src="../../assets/js/aether.tech.js"></script>
 
 
